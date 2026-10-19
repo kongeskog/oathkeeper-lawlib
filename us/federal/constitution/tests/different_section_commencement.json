@@ -1,0 +1,37 @@
+{
+  "name": "different_section_commencement",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.text.twentieth_section_four_in_force",
+    "arguments": {
+      "on": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "std.date.Date",
+          "type_args": [],
+          "fields": {
+            "day": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "-13492"
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "senate_boundary",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.text.senate_textual_requirements",
+    "arguments": {
+      "facts": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.text.CandidateFacts",
+          "type_args": [],
+          "fields": {
+            "age_at_assessed_service": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "30"
+              },
+              "evidence": []
+            },
+            "completed_citizenship_years": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "9"
+              },
+              "evidence": []
+            },
+            "inhabitant_when_elected": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": true
+    }
+  }
+}

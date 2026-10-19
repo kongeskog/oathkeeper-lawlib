@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "root_package": "lawlib.legal",
+  "root_digest": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+  "packages": [
+    {
+      "name": "lawlib.legal",
+      "version": "0.1.0",
+      "digest": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+      "dependencies": {
+        "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
+      }
+    },
+    {
+      "name": "std",
+      "version": "0.1.0",
+      "digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+      "dependencies": {}
+    }
+  ]
+}

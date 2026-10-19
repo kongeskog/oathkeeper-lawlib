@@ -1,0 +1,30 @@
+{
+  "name": "competing_interpretations",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.synthetic.competing_interpretations",
+    "arguments": {
+      "first_accepted": {
+        "state": "known",
+        "value": {
+          "type": "bool",
+          "value": true
+        },
+        "evidence": []
+      },
+      "second_accepted": {
+        "state": "known",
+        "value": {
+          "type": "bool",
+          "value": true
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "conflicted"
+  }
+}

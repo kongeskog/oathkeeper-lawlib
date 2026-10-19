@@ -1,0 +1,140 @@
+{
+  "name": "dissent_not_controlling",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.authority.binding",
+    "arguments": {
+      "context": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.authority.AuthorityContext",
+          "type_args": [],
+          "fields": {
+            "profile": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "us.authority.CourtProfile",
+                "type_args": [],
+                "variant": "SupremeCourtInFederalLowerCourt",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "role": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "legal.model.OpinionRole",
+                "type_args": [],
+                "variant": "Dissent",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "publication": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "legal.model.Publication",
+                "type_args": [],
+                "variant": "Published",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "issued_on": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "9272"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "historical_cutoff": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "std.types.Option",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.date.Date",
+                      "args": []
+                    }
+                  }
+                ],
+                "variant": "None",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "accepted_holding": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "materially_applicable": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "treatment_leaves_proposition_controlling": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "citation_permitted_under_applicable_rules": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "accepted_persuasive_relevance": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": false
+    }
+  }
+}

@@ -1,0 +1,34 @@
+name: lawlib
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  computational:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: lawlib
+      - id: pin
+        shell: pwsh
+        env:
+          RUNTIME_REPOSITORY: ${{ vars.OATHKEEPER_REPOSITORY }}
+        run: |
+          if (-not $env:RUNTIME_REPOSITORY) { throw 'Set repository variable OATHKEEPER_REPOSITORY to owner/repository before enabling hosted CI.' }
+          $pin = Get-Content -Raw lawlib/compatibility.json | ConvertFrom-Json
+          "revision=$($pin.revision)" >> $env:GITHUB_OUTPUT
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.OATHKEEPER_REPOSITORY }}
+          ref: ${{ steps.pin.outputs.revision }}
+          path: oathkeeper
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.98.1
+      - working-directory: oathkeeper
+        run: cargo build --workspace --locked
+      - shell: pwsh
+        run: ./lawlib/scripts/test.ps1

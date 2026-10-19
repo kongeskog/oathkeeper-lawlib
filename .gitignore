@@ -1,0 +1,3 @@
+*.cert.json
+/.source-cache/
+/work/

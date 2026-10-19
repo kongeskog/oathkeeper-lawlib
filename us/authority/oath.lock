@@ -1,0 +1,30 @@
+{
+  "version": "0.1.0",
+  "root_package": "us.authority",
+  "root_digest": "2075870325172912f16b3047fc949d3f945e8b13e1fa15570de2d732e58ecad3",
+  "packages": [
+    {
+      "name": "lawlib.legal",
+      "version": "0.1.0",
+      "digest": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+      "dependencies": {
+        "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
+      }
+    },
+    {
+      "name": "std",
+      "version": "0.1.0",
+      "digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+      "dependencies": {}
+    },
+    {
+      "name": "us.authority",
+      "version": "0.1.0",
+      "digest": "2075870325172912f16b3047fc949d3f945e8b13e1fa15570de2d732e58ecad3",
+      "dependencies": {
+        "legal": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+        "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
+      }
+    }
+  ]
+}

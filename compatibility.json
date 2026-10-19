@@ -1,0 +1,8 @@
+{
+  "revision": "bc8c54115a354b2c468efbeed8bc87f2b3c34107",
+  "kind": "candidate",
+  "language": "=0.1.0",
+  "version": "0.1.0",
+  "engine": "oathkeeper",
+  "note": "Exact candidate build; sibling local checkout paths are resolution hints."
+}

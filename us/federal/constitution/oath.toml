@@ -1,0 +1,15 @@
+[package]
+name = "us.federal.constitution"
+version = "0.1.0"
+language = "=0.1.0"
+entry = "src/main.oath"
+
+[dependencies.std]
+path = "../../../../oathkeeper/stdlib"
+version = "=0.1.0"
+[dependencies.legal]
+path = "../../../legal"
+version = "=0.1.0"
+[dependencies.us_authority]
+path = "../../authority"
+version = "=0.1.0"

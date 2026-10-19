@@ -1,0 +1,159 @@
+{
+  "name": "unknown_trigger",
+  "request": {
+    "version": "0.1.0",
+    "query": "legal.examples.operative",
+    "arguments": {
+      "lifecycle": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "legal.model.Lifecycle",
+          "type_args": [],
+          "fields": {
+            "adopted_on": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "std.types.Option",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.date.Date",
+                      "args": []
+                    }
+                  }
+                ],
+                "variant": "Some",
+                "fields": [
+                  {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.date.Date",
+                      "type_args": [],
+                      "fields": {
+                        "day": {
+                          "state": "known",
+                          "value": {
+                            "type": "int",
+                            "value": "20744"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  }
+                ]
+              },
+              "evidence": []
+            },
+            "enacted_on": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "std.types.Option",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.date.Date",
+                      "args": []
+                    }
+                  }
+                ],
+                "variant": "None",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "commencement_on": {
+              "state": "missing",
+              "issues": [
+                {
+                  "id": "commencement.trigger",
+                  "kind": "Fact",
+                  "message": "Required supplied finding is missing"
+                }
+              ]
+            },
+            "ends_on": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "std.types.Option",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.date.Date",
+                      "args": []
+                    }
+                  }
+                ],
+                "variant": "Some",
+                "fields": [
+                  {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.date.Date",
+                      "type_args": [],
+                      "fields": {
+                        "day": {
+                          "state": "known",
+                          "value": {
+                            "type": "int",
+                            "value": "21915"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  }
+                ]
+              },
+              "evidence": []
+            },
+            "end_inclusive": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      },
+      "on": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "std.date.Date",
+          "type_args": [],
+          "fields": {
+            "day": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "21701"
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "undetermined"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "accepted_emergency",
+  "request": {
+    "version": "0.1.0",
+    "query": "household.quiet_hours.noise_status",
+    "arguments": {
+      "event": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "household.quiet_hours.NoiseEvent",
+          "type_args": [],
+          "fields": {
+            "on": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "21701"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "member": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "after_hours": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "emergency": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "finding:household.emergency.1"
+              ]
+            },
+            "approved_event": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "variant",
+      "name": "household.quiet_hours.NoiseStatus",
+      "type_args": [],
+      "variant": "Permitted",
+      "fields": []
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "name": "unaffected_proposition",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.synthetic.proposition_survives",
+    "arguments": {
+      "target_id": {
+        "state": "known",
+        "value": {
+          "type": "text",
+          "value": "synthetic.proposition.b"
+        },
+        "evidence": []
+      },
+      "treatment": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "legal.model.Treatment",
+          "type_args": [],
+          "fields": {
+            "id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic.t1"
+              },
+              "evidence": []
+            },
+            "treating_authority": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic.court"
+              },
+              "evidence": []
+            },
+            "target_id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic.proposition.a"
+              },
+              "evidence": []
+            },
+            "target_kind": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "legal.model.TreatmentTarget",
+                "type_args": [],
+                "variant": "Proposition",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "kind": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "legal.model.TreatmentKind",
+                "type_args": [],
+                "variant": "Overruled",
+                "fields": []
+              },
+              "evidence": []
+            },
+            "scope": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "legal.model.Scope",
+                "type_args": [],
+                "fields": {
+                  "parties": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": []
+                    },
+                    "evidence": []
+                  },
+                  "places": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": []
+                    },
+                    "evidence": []
+                  },
+                  "questions": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": [
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "text",
+                            "value": "synthetic.issue"
+                          },
+                          "evidence": []
+                        }
+                      ]
+                    },
+                    "evidence": []
+                  },
+                  "description": {
+                    "state": "known",
+                    "value": {
+                      "type": "text",
+                      "value": "Fictional treatment only"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "temporal_reach": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "As accepted in scenario"
+              },
+              "evidence": []
+            },
+            "anchors": {
+              "state": "known",
+              "value": {
+                "type": "list",
+                "items": []
+              },
+              "evidence": []
+            },
+            "interpretation_id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic.interpretation"
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      },
+      "accepted_within_scope": {
+        "state": "known",
+        "value": {
+          "type": "bool",
+          "value": true
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": true
+    }
+  }
+}

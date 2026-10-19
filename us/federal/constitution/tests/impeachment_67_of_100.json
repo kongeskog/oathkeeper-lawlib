@@ -1,0 +1,53 @@
+{
+  "name": "impeachment_67_of_100",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.text.impeachment_numeric_threshold",
+    "arguments": {
+      "vote": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.text.Vote",
+          "type_args": [],
+          "fields": {
+            "affirmative": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "67"
+              },
+              "evidence": []
+            },
+            "denominator": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "100"
+              },
+              "evidence": []
+            },
+            "inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": true
+    }
+  }
+}

@@ -1,0 +1,494 @@
+{
+  "name": "missing_balance",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.ira.y2025.conversion.taxable_conversion",
+    "arguments": {
+      "transaction": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.ira.y2025.model.Conversion",
+          "type_args": [],
+          "fields": {
+            "tax_year": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "2025"
+              },
+              "evidence": []
+            },
+            "on": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "20241"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "contribution": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "us.ira.y2025.model.Contribution",
+                "type_args": [],
+                "fields": {
+                  "tax_year": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "2025"
+                    },
+                    "evidence": []
+                  },
+                  "on": {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.date.Date",
+                      "type_args": [],
+                      "fields": {
+                        "day": {
+                          "state": "known",
+                          "value": {
+                            "type": "int",
+                            "value": "20240"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  },
+                  "age_at_year_end": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "35"
+                    },
+                    "evidence": []
+                  },
+                  "amount": {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.money.Money",
+                      "type_args": [
+                        {
+                          "kind": "named",
+                          "data": {
+                            "name": "std.money.USD",
+                            "args": []
+                          }
+                        }
+                      ],
+                      "fields": {
+                        "amount": {
+                          "state": "known",
+                          "value": {
+                            "type": "rational",
+                            "numerator": "7000",
+                            "denominator": "1"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  },
+                  "other_personal_ira_contributions": {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.money.Money",
+                      "type_args": [
+                        {
+                          "kind": "named",
+                          "data": {
+                            "name": "std.money.USD",
+                            "args": []
+                          }
+                        }
+                      ],
+                      "fields": {
+                        "amount": {
+                          "state": "known",
+                          "value": {
+                            "type": "rational",
+                            "numerator": "0",
+                            "denominator": "1"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  },
+                  "qualifying_compensation": {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.money.Money",
+                      "type_args": [
+                        {
+                          "kind": "named",
+                          "data": {
+                            "name": "std.money.USD",
+                            "args": []
+                          }
+                        }
+                      ],
+                      "fields": {
+                        "amount": {
+                          "state": "known",
+                          "value": {
+                            "type": "rational",
+                            "numerator": "100000",
+                            "denominator": "1"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  },
+                  "contribution_inventory_complete": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "own_account": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "ordinary_cash_contribution": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "nondeductible_designated": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "deduction_claimed": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": false
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "converted": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.money.Money",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.money.USD",
+                      "args": []
+                    }
+                  }
+                ],
+                "fields": {
+                  "amount": {
+                    "state": "known",
+                    "value": {
+                      "type": "rational",
+                      "numerator": "7000",
+                      "denominator": "1"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "prior_basis": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.money.Money",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "std.money.USD",
+                      "args": []
+                    }
+                  }
+                ],
+                "fields": {
+                  "amount": {
+                    "state": "known",
+                    "value": {
+                      "type": "rational",
+                      "numerator": "0",
+                      "denominator": "1"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "basis_history_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "accounts": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "legal.model.Inventory",
+                "type_args": [
+                  {
+                    "kind": "named",
+                    "data": {
+                      "name": "us.ira.y2025.model.Account",
+                      "args": []
+                    }
+                  }
+                ],
+                "fields": {
+                  "entries": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": [
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.ira.y2025.model.Account",
+                            "type_args": [],
+                            "fields": {
+                              "id": {
+                                "state": "known",
+                                "value": {
+                                  "type": "text",
+                                  "value": "ira.1"
+                                },
+                                "evidence": []
+                              },
+                              "kind": {
+                                "state": "known",
+                                "value": {
+                                  "type": "variant",
+                                  "name": "us.ira.y2025.model.AccountKind",
+                                  "type_args": [],
+                                  "variant": "Traditional",
+                                  "fields": []
+                                },
+                                "evidence": []
+                              },
+                              "year_end_balance": {
+                                "state": "missing",
+                                "issues": [
+                                  {
+                                    "id": "balance",
+                                    "kind": "Fact",
+                                    "message": "Required supplied finding is missing"
+                                  }
+                                ]
+                              },
+                              "own_account": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              },
+                              "inherited": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "simple_two_year_condition_satisfied": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        }
+                      ]
+                    },
+                    "evidence": []
+                  },
+                  "complete": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "scope": {
+                    "state": "known",
+                    "value": {
+                      "type": "text",
+                      "value": "All relevant own traditional, SEP and SIMPLE IRAs"
+                    },
+                    "evidence": []
+                  },
+                  "as_of": {
+                    "state": "known",
+                    "value": {
+                      "type": "record",
+                      "name": "std.date.Date",
+                      "type_args": [],
+                      "fields": {
+                        "day": {
+                          "state": "known",
+                          "value": {
+                            "type": "int",
+                            "value": "20453"
+                          },
+                          "evidence": []
+                        }
+                      }
+                    },
+                    "evidence": []
+                  },
+                  "evidence_ids": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": [
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "text",
+                            "value": "inventory:accepted"
+                          },
+                          "evidence": []
+                        }
+                      ]
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "transaction_inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "trustee_to_trustee": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "qualifying_roth_destination": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "has_rmd": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            },
+            "has_corrections": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            },
+            "has_outstanding_rollovers": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            },
+            "has_other_distributions": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            },
+            "has_special_transactions": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "undetermined"
+  }
+}

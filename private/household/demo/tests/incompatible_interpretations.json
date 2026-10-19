@@ -1,0 +1,30 @@
+{
+  "name": "incompatible_interpretations",
+  "request": {
+    "version": "0.1.0",
+    "query": "household.quiet_hours.synthetic_conflict",
+    "arguments": {
+      "first": {
+        "state": "known",
+        "value": {
+          "type": "bool",
+          "value": true
+        },
+        "evidence": []
+      },
+      "second": {
+        "state": "known",
+        "value": {
+          "type": "bool",
+          "value": true
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {}
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "conflicted"
+  }
+}
