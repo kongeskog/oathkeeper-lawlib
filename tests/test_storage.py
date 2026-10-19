@@ -1,4 +1,5 @@
 import hashlib
+import importlib.util
 import io
 import json
 from pathlib import Path
@@ -22,6 +23,15 @@ def entry(data=b'original evidence'):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_release_lookup_resumes_unpublished_draft(self):
+        spec=importlib.util.spec_from_file_location('publisher',ROOT/'tools/publish_evidence.py')
+        publisher=importlib.util.module_from_spec(spec);spec.loader.exec_module(publisher)
+        from types import SimpleNamespace
+        draft={'id':123,'tag_name':'evidence-test','draft':True,'assets':[]}
+        with patch.object(publisher.subprocess,'run',return_value=SimpleNamespace(returncode=0,stdout=json.dumps([[draft]]))):
+            self.assertEqual(publisher.github('example/corpus','evidence-test'),draft)
+            self.assertIsNone(publisher.github('example/corpus','missing'))
+
     def test_offline_miss_is_explicit_and_never_downloads(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(sources, 'urlopen') as network:
             with self.assertRaisesRegex(FileNotFoundError, 'unavailable offline'):

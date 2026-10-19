@@ -17,12 +17,15 @@ from lawlib_tools import sources
 
 
 def github(repository, tag):
-    result = subprocess.run(['gh','api',f'repos/{repository}/releases/tags/{tag}'],text=True,capture_output=True)
+    # The by-tag endpoint does not return an unpublished draft. Enumerate
+    # authorized releases so interrupted uploads can resume that same draft.
+    result = subprocess.run(['gh','api','--paginate','--slurp',f'repos/{repository}/releases?per_page=100'],text=True,capture_output=True)
     if result.returncode:
-        if 'HTTP 404' in result.stderr:
-            return None
         raise RuntimeError('GitHub release lookup failed: ' + result.stderr)
-    return json.loads(result.stdout)
+    matches=[release for page in json.loads(result.stdout) for release in page if release['tag_name']==tag]
+    if len(matches)>1:
+        raise ValueError('multiple releases have this tag; resolve duplicate drafts before publishing')
+    return matches[0] if matches else None
 
 
 def main():

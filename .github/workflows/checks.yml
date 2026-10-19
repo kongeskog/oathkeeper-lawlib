@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHONDONTWRITEBYTECODE: '1'
-      OATHKEEPER_CACHE_DIR: ${{ runner.temp }}/oathkeeper-evidence
+      OATHKEEPER_CACHE_DIR: ${{ github.workspace }}/.evidence-cache
     steps:
       - uses: actions/checkout@v4
         with:
