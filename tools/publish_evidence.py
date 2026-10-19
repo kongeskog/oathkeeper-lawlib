@@ -28,6 +28,19 @@ def github(repository, tag):
     return matches[0] if matches else None
 
 
+def read_release(repository, release_id):
+    return json.loads(subprocess.check_output(['gh','api',f'repos/{repository}/releases/{release_id}'],text=True))
+
+
+def create_release(repository, tag, target, title, notes):
+    # Use the creation response directly: list/by-tag reads may not yet expose
+    # a just-created draft. Its numeric ID is immediately usable for uploads.
+    payload={'tag_name':tag,'target_commitish':target,'draft':True,'name':title,'body':notes}
+    return json.loads(subprocess.check_output(
+        ['gh','api','--method','POST',f'repos/{repository}/releases','--input','-'],
+        input=json.dumps(payload),text=True))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tag',required=True)
@@ -59,10 +72,8 @@ def main():
     release=github(repository,args.tag)
     if release is None:
         target=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
-        subprocess.run(['gh','release','create',args.tag,'--repo',repository,'--target',target,
-                        '--draft','--title','Evidence archive: '+args.tag,
-                        '--notes','Exact-byte source snapshots named by SHA-256. Original authority, retrieval metadata and rights are recorded in sources.lock.json. Never replace an asset to represent a new edition.'],check=True)
-        release=github(repository,args.tag)
+        release=create_release(repository,args.tag,target,'Evidence archive: '+args.tag,
+            'Exact-byte source snapshots named by SHA-256. Original authority, retrieval metadata and rights are recorded in sources.lock.json. Never replace an asset to represent a new edition.')
     existing={asset['name']:asset for asset in release['assets']}
     with tempfile.TemporaryDirectory(prefix='oathkeeper-evidence-publish-') as temp:
         for source in evidence:
@@ -75,7 +86,7 @@ def main():
             path=Path(temp)/name
             path.write_bytes(sources.require(source).read_bytes())
             subprocess.run(['gh','release','upload',args.tag,str(path),'--repo',repository],check=True)
-    release=github(repository,args.tag)
+    release=read_release(repository,release['id'])
     existing={asset['name']:asset for asset in release['assets']}
     for source in evidence:
         name=source['sha256']+Path(source['file']).suffix
@@ -84,6 +95,7 @@ def main():
             raise ValueError('uploaded asset verification failed: '+name)
     if release['draft']:
         subprocess.run(['gh','release','edit',args.tag,'--repo',repository,'--draft=false','--latest=false'],check=True)
+        release=read_release(repository,release['id'])
     print(json.dumps({'status':'published','objects':len(evidence),'release':release['html_url']}))
 
 
