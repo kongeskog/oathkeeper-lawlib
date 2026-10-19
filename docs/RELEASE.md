@@ -1,4 +1,26 @@
-# Initial 0.1.0 legal-library snapshot
+# Legal-library developer releases
+
+## 0.1.0-dev.2 — source inventory and procedural computation
+
+Adds the pinned OLRC 119-121 U.S. Code source inventory and an offline streaming
+importer. All 58 XML documents reproduce with identical original and derived
+hashes. The index preserves source structure, note classifications and references;
+it creates no executable rules and claims no collection beyond the supplied Code.
+
+Adds `us.federal.procedure.frcp.6`, a conditional forward whole-day Rule 6(a)
+date model with explicit holiday/accessibility findings and 40 semantic fixtures.
+Six packages now contain 105 fixtures. Every successful fixture is independently
+certificate-checked. The language kernel and existing package sources are
+unchanged; `compatibility.json` still identifies the tested Rust candidate.
+
+The new encoding is **Unreviewed**. Its review packet is ready for assessment;
+no lawyer review has occurred. The dated cache audit now covers 14 unique source
+references. Original public documents and large derived indexes stay external.
+Prior releases, sources and pins are preserved. General ingestion of all law,
+reference resolution, citator coverage and amendment impact analysis are not
+delivered by this milestone.
+
+## 0.1.0-dev.1 — initial foundation
 
 The five packages are runnable developer examples with complete local scenario
 fixtures. Their review status is Unreviewed. No test or hash audit is a substitute

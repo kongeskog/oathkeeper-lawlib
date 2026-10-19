@@ -18,8 +18,14 @@ tracked separately.
 | `us/authority` | Narrow supplied court profiles; binding force, citation permission and persuasive relevance are separate questions |
 | `us/federal/constitution` | Selected age/citizenship requirements, numeric thresholds, Amendment XX commencement and a narrow Thornton proposition |
 | `us/federal/tax/ira/2025` | Ordinary same-year own-account contributions and conversions, exact basis allocation and selected Form 8606 reporting |
+| `us/federal/procedure/frcp/6` | Conditional Rule 6(a) date computation with supplied calendar findings, weekends, holidays and clerk inaccessibility |
 
 The Constitution source map covers all seven Articles and 27 Amendments.
+The [federal source inventory](inventory/README.md) separately pins all 58 XML
+documents in OLRC release 119-121. Imported source structure is not executable
+coverage. See the [Rule 6 review packet](us/federal/procedure/frcp/6/REVIEW.md)
+for the first procedural-law package and its pending legal review.
+
 Only the named questions execute. Synthetic treatment/interpretation fixtures
 are explicitly labeled and make no assertions about actual subsequent history.
 

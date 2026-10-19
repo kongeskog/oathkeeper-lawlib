@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "root_package": "us.federal.procedure.frcp.6",
+  "root_digest": "52067918617a4b5b0ab1e8c4fb1577d0a55fd8cde98e8db9bbf293903647ef95",
+  "packages": [
+    {
+      "name": "std",
+      "version": "0.1.0",
+      "digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+      "dependencies": {}
+    },
+    {
+      "name": "us.federal.procedure.frcp.6",
+      "version": "0.1.0",
+      "digest": "52067918617a4b5b0ab1e8c4fb1577d0a55fd8cde98e8db9bbf293903647ef95",
+      "dependencies": {
+        "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
+      }
+    }
+  ]
+}

@@ -1,0 +1,605 @@
+{
+  "name": "state_holiday",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.frcp.r6.deadline_date",
+    "arguments": {
+      "facts": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.frcp.r6.model.DeadlineFacts",
+          "type_args": [],
+          "fields": {
+            "court_id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic:us-district-court"
+              },
+              "evidence": []
+            },
+            "state_id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "synthetic:state"
+              },
+              "evidence": []
+            },
+            "trigger": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "20514"
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            },
+            "period_days": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "1"
+              },
+              "evidence": []
+            },
+            "measured_after_event": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "rule6_applies": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "selected_text_applies": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "requires_filing": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "no_other_adjustments": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": []
+            },
+            "calendar": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "us.frcp.r6.model.Calendar",
+                "type_args": [],
+                "fields": {
+                  "court_id": {
+                    "state": "known",
+                    "value": {
+                      "type": "text",
+                      "value": "synthetic:us-district-court"
+                    },
+                    "evidence": []
+                  },
+                  "state_id": {
+                    "state": "known",
+                    "value": {
+                      "type": "text",
+                      "value": "synthetic:state"
+                    },
+                    "evidence": []
+                  },
+                  "holiday_findings_complete": {
+                    "state": "known",
+                    "value": {
+                      "type": "bool",
+                      "value": true
+                    },
+                    "evidence": []
+                  },
+                  "days": {
+                    "state": "known",
+                    "value": {
+                      "type": "list",
+                      "items": [
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20515"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20516"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20517"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20518"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20519"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20520"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        },
+                        {
+                          "state": "known",
+                          "value": {
+                            "type": "record",
+                            "name": "us.frcp.r6.model.DayFinding",
+                            "type_args": [],
+                            "fields": {
+                              "on": {
+                                "state": "known",
+                                "value": {
+                                  "type": "record",
+                                  "name": "std.date.Date",
+                                  "type_args": [],
+                                  "fields": {
+                                    "day": {
+                                      "state": "known",
+                                      "value": {
+                                        "type": "int",
+                                        "value": "20521"
+                                      },
+                                      "evidence": []
+                                    }
+                                  }
+                                },
+                                "evidence": []
+                              },
+                              "statutory_observance": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "presidential_or_congressional_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "state_declared_holiday": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": false
+                                },
+                                "evidence": []
+                              },
+                              "clerk_accessible": {
+                                "state": "known",
+                                "value": {
+                                  "type": "bool",
+                                  "value": true
+                                },
+                                "evidence": []
+                              }
+                            }
+                          },
+                          "evidence": []
+                        }
+                      ]
+                    },
+                    "evidence": []
+                  }
+                }
+              },
+              "evidence": []
+            }
+          }
+        },
+        "evidence": []
+      }
+    },
+    "metadata": {
+      "fixture_kind": "Synthetic conditional legal premises",
+      "expected_reason": "Fictional state declaration counts for a period after an event.",
+      "legal_review": "Unreviewed"
+    }
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "record",
+      "name": "std.date.Date",
+      "type_args": [],
+      "fields": {
+        "day": {
+          "state": "known",
+          "value": {
+            "type": "int",
+            "value": "20516"
+          },
+          "evidence": []
+        }
+      }
+    }
+  }
+}

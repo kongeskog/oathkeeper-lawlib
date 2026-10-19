@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-19",
+  "kind": "cached_source_byte_audit",
+  "sources": [
+    {
+      "status": "matched",
+      "source": "household.demo.policy.2026",
+      "sha256": "bf22347986ff2e722b76b02accc520a9911d7a4b29c2ed9ff88be86af00abeab"
+    },
+    {
+      "status": "matched",
+      "source": "us.archives.amendments11_27",
+      "sha256": "7d2fee9fe41b427eb5fb908159837fe8e1c9df0e414e1822fd0bc3b3d284d747"
+    },
+    {
+      "status": "matched",
+      "source": "us.archives.bill_of_rights",
+      "sha256": "3c6e60165cabce6184f9c24b7b3e27a07a6ad2079ea6474f41c098d84e5ff690"
+    },
+    {
+      "status": "matched",
+      "source": "us.archives.constitution",
+      "sha256": "14201a4a40027c4652106f45bf92f67738b9df109d61159b148d07786c1c3b1d"
+    },
+    {
+      "status": "matched",
+      "source": "us.ca9.decisions.2026",
+      "sha256": "b157f6b32a878a2d528d9fe5ae33a2a0d601ec9ad3de167097a44648b1667ee4"
+    },
+    {
+      "status": "matched",
+      "source": "us.irs.form8606.2025",
+      "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+    },
+    {
+      "status": "matched",
+      "source": "us.irs.instructions8606.2025",
+      "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+    },
+    {
+      "status": "matched",
+      "source": "us.irs.notice2024_80",
+      "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+    },
+    {
+      "status": "matched",
+      "source": "us.scotus.rodriguez.1989",
+      "sha256": "3a8a965aff11cf29d18aa2cfa40be36fdcfcc6cc03f6daf841d6d0d888164cd6"
+    },
+    {
+      "status": "matched",
+      "source": "us.scotus.thornton.text",
+      "sha256": "4c1b0c88a6227b6a29ead6b8dcfd851dd59b4e8a356fed7e65c187484ab32fa4"
+    },
+    {
+      "status": "matched",
+      "source": "us.usc2024.26.219",
+      "sha256": "78546cf04760202d1e5b38d7bad20ebd427507dbc9d1d98a14e497c4b8279d7c"
+    },
+    {
+      "status": "matched",
+      "source": "us.usc2024.26.408",
+      "sha256": "681b87206d68f158aa143b351f77eb32843241d0111303abd2d4f1e5d56939b9"
+    },
+    {
+      "status": "matched",
+      "source": "us.usc2024.26.408a",
+      "sha256": "7822dc0aa159ecb58874125f8bc9b5b2daa5283a3db74d3dae8102660fabc801"
+    },
+    {
+      "status": "matched",
+      "source": "us.uscourts.frcp.2025",
+      "sha256": "bd8705fc038d87e4fe222a7ea2e4324222c9430e2373fce56826bd2dfa2f8baf"
+    }
+  ]
+}

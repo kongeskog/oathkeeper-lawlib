@@ -1,3 +1,5 @@
 *.cert.json
 /.source-cache/
 /work/
+node_modules/
+/.inventory-cache/
