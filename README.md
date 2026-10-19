@@ -1,8 +1,18 @@
 # Oathkeeper lawlib
 
-Community-maintained, source-backed legal formalizations for [Oathkeeper](https://github.com/kongeskog/oathkeeper). Legal rules and cases are authored in `.oath`. The JSON kept in Git is authored metadata: source manifests, interpretation notes, review statements, coverage inventories and scenario inputs. Compiled JSON and reports are build outputs, never source.
+Community-maintained, source-backed legal formalizations for [Oathkeeper](https://github.com/kongeskog/oathkeeper). Legal rules and cases are authored in `.oath`. The legal-source tree contains only `.oath` files and module READMEs.
 
-This repository owns the legal modules and their review history. The software repository vendors an immutable source snapshot, pinned by commit and a SHA-256 inventory. Evidence bytes live in a separate verified cache; compilation and proof checking work offline without downloading PDFs. Changes here do not silently change existing proofs or applications.
+| Location | Contents |
+| --- | --- |
+| [`us/`](us/README.md) | Legal rules and real-case reconstructions |
+| [`metadata/`](metadata/README.md) | Authored source inventories, interpretation notes, coverage and review records |
+| [`tests/scenarios/`](tests/scenarios/README.md) | Synthetic calculation inputs |
+| [`community/`](community/README.md) | Signed review journal and trusted public keys |
+| `.build/` (ignored) | Compiled JSON, proof reports and review packets |
+
+The [`oath-package.json`](oath-package.json) manifest connects each module to its metadata and test inputs. JSON in Git describes those inputs; compiled JSON is always a build output.
+
+This repository owns the legal modules and their review history. The software repository keeps a commit-and-SHA-256 lockfile and downloads that exact source into an ignored dependency directory. It does not duplicate this corpus in Git. Evidence bytes live in a separate verified cache; compilation and proof checking work offline without downloading PDFs. Changes here do not silently change existing proofs or applications.
 
 ## Current collection
 

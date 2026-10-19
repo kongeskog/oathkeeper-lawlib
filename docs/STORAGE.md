@@ -3,13 +3,17 @@
 The repository contains what contributors author. Reviewable changes should show a changed legal premise, citation, interpretation or test input, without thousands of generated lines or a PDF replacement.
 
 ```text
-us/                       .oath rules and cases; authored metadata and scenarios
+us/                       .oath rules and real cases; module READMEs
+metadata/us/              source inventories, interpretations, coverage and review records
+tests/scenarios/us/        synthetic JSON inputs
 community/                signed review events and trusted public keys
 tools/                    compiler, audit and evidence-cache commands
 tests/                    storage and reproducibility regression tests
-oath-package.json          package and exact engine version
+oath-package.json         module paths, package and exact engine version
 .build/                   generated JSON, proofs and review packets (ignored)
 ```
+
+Legal-source directories contain only `.oath` files and `README.md`. Metadata mirrors the jurisdiction hierarchy for navigation, but tools resolve its actual paths from `oath-package.json`. Each module declares its `entrypoint`, `sources` and `interpretations`, plus applicable `coverage`, `review`, `pilot`, `migration` and `scenarios` inputs. All paths in that manifest are package-relative. Moving metadata does not change a legal module's source digest.
 
 ## Generated artifacts
 
@@ -17,7 +21,7 @@ Install the Python binding for the exact `engine_version` in `oath-package.json`
 
 `python tools/build.py --check` independently rebuilds and compares all output bytes, detecting stale or edited products. Paths, build timestamps and machine timings do not enter the artifacts. `python tools/build.py --archive /tmp/oathkeeper-lawlib.tar.gz` produces a reproducible release archive. CI attaches this directory to each successful validation run; release archives are published separately from Git source.
 
-Authored JSON is still appropriate for manifests, source provenance, scenario inputs and signed review events. It is not a second authoring language for legal rules. CI rejects compiled exports, PDFs, archives and files larger than 1 MiB in the authored tree.
+Authored JSON belongs in the metadata, test and community directories, plus the root package and evaluation manifests. CI rejects JSON or other non-source files in jurisdiction directories, misplaced metadata/scenario declarations, compiled exports, PDFs, archives and files larger than 1 MiB in the authored tree.
 
 ## Evidence objects
 
@@ -48,4 +52,8 @@ For offline environments, copy the cache or use `sources.py import --source ID -
 
 New documents are uploaded as new content-addressed assets; never replace an existing asset to represent an amendment. New editions receive new hashes and explicit provenance. Do not run `gh release upload --clobber` on evidence. Preserve original rights and do not publish private records.
 
-Version 0.1.0 and its historical Git objects remain intact because released software pins that exact revision. Version 0.2.0 removes generated products and source documents from the current source tree and stops that growth. A shallow clone or a GitHub source archive downloads only the current authored snapshot. Rewriting historical tags would break existing revision pins and is not part of this migration.
+Version 0.1.0 and its historical Git objects remain intact because released software pins that exact revision. Version 0.2.0 removes generated products and source documents from the current source tree and stops that growth. Version 0.2.1 separates authored metadata and synthetic inputs from legal code without changing any `.oath` bytes or evidence digests. A shallow clone or a GitHub source archive downloads only the current authored snapshot. Rewriting historical tags would break existing revision pins and is not part of this migration.
+
+## Software dependency
+
+The software repository keeps `lawlib.lock.json`, not a second copy of this source tree. Its `python tools/lawlib_package.py sync` command fetches the exact commit into ignored `.deps/lawlib/` and verifies the complete SHA-256 inventory. A prepared checkout builds offline. Corpus changes enter software only through an explicit lockfile update and replay.

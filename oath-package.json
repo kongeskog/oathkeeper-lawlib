@@ -1,7 +1,7 @@
 {
   "format": "oathkeeper.law-package/1",
   "name": "oathkeeper-lawlib",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "language": "oathkeeper/0.5",
   "engine_version": "0.5.0",
   "repository": "https://github.com/kongeskog/oathkeeper-lawlib",
@@ -10,20 +10,25 @@
     {
       "id": "seattle",
       "entrypoint": "us/wa/seattle/parking.oath",
-      "interpretations": "us/wa/seattle/interpretations.json",
-      "sources": "us/wa/seattle/sources.lock.json"
+      "interpretations": "metadata/us/wa/seattle/interpretations.json",
+      "sources": "metadata/us/wa/seattle/sources.lock.json",
+      "coverage": "metadata/us/wa/seattle/coverage.json",
+      "review": "metadata/us/wa/seattle/review.json",
+      "pilot": "metadata/us/wa/seattle/pilot.json",
+      "migration": "metadata/us/wa/seattle/migration-0.4.json"
     },
     {
       "id": "ira2025",
       "entrypoint": "us/tax/backdoor-roth-2025.oath",
-      "interpretations": "us/tax/interpretations.json",
-      "sources": "us/tax/sources.lock.json"
+      "interpretations": "metadata/us/tax/interpretations.json",
+      "sources": "metadata/us/tax/sources.lock.json",
+      "scenarios": "tests/scenarios/us/tax"
     },
     {
       "id": "shank",
       "entrypoint": "us/tax/shank-basis.oath",
-      "interpretations": "us/tax/interpretations.json",
-      "sources": "us/tax/sources.lock.json"
+      "interpretations": "metadata/us/tax/interpretations.json",
+      "sources": "metadata/us/tax/sources.lock.json"
     }
   ],
   "build": {

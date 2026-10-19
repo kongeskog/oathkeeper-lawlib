@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from . import audit_lawlib, audit_tax, sources
 from .build import build
-from .runtime import ROOT, check_layout
+from .runtime import ROOT, check_layout, module_paths
 
 def check_splits(data):
     seen={}
@@ -24,8 +24,8 @@ def check(root=ROOT, output=None, *, fetch=False):
     for source in evidence:
         (sources.fetch if fetch else sources.require)(source)
     report=build(root,output)
-    seattle=audit_lawlib.audit(root/'us/wa/seattle')
-    tax=audit_tax.audit(base=root/'us/tax')
+    seattle=audit_lawlib.audit(module_paths(root,'seattle')['entrypoint'].parent)
+    tax=audit_tax.audit(base=module_paths(root,'ira2025')['entrypoint'].parent)
     check_splits(json.loads((root/'evaluation-groups.json').read_text()))
     return {'sources':len(evidence),'historical_proof_paths':len(seattle['cases_verified'])+tax['historical_proof_paths'],
             'artifacts_generated':len(report['files']),'evidence_bytes':'verified',

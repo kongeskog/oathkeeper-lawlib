@@ -1,9 +1,16 @@
 # United States starter namespace
 
-The [Seattle parking/Long module](wa/seattle/README.md) is the first source-backed
-module. It contains nine rules and five real-case reconstructions, with review
-still outstanding. Expansion should be narrow, sourced, and jointly reviewed for
-legal fidelity and formal correctness.
+This tree contains only `.oath` legal rules, real-case reconstructions and module
+READMEs. The [Seattle parking/Long module](wa/seattle/README.md) contains 14 rules
+and five historical proof paths from one real matter. The [federal IRA pilot](tax/README.md)
+adds bounded 2025 allocation rules and two proof paths from the real *Shank* matter.
+Community review remains pending. Expansion should be narrow, sourced, and
+reviewed for legal fidelity and formal correctness.
+
+Source inventories, interpretation notes and review records live in
+[`metadata/us/`](../metadata/us/). Synthetic inputs live in
+[`tests/scenarios/us/`](../tests/scenarios/us/). The root package manifest connects them
+to their `.oath` entrypoints.
 
 US authority is not simply a geographical inheritance tree. Federal, state,
 tribal, local, administrative, and private authority interact in different ways.

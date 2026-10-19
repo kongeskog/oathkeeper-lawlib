@@ -62,7 +62,9 @@ def main():
         for module in package['modules']:
             lock=root/module['sources']
             for entry in json.loads(lock.read_text())['sources']:
-                paths[entry['sha256']]=(lock.parent/entry['file']).relative_to(root).as_posix()
+                # Before evidence moved out of Git, snapshots were alongside
+                # legal code. Metadata now lives in its own directory.
+                paths[entry['sha256']]=(Path(module['entrypoint']).parent/entry['file']).as_posix()
         for source in evidence:
             data=subprocess.check_output(['git','-C',str(root),'show',args.from_revision+':'+paths[source['sha256']]])
             import io

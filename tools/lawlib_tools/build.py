@@ -10,7 +10,7 @@ import tempfile
 
 import oathkeeper
 from . import audit_tax, benchmark, community_review, review_packet, sources
-from .runtime import ROOT, check_layout, combine, compile_source, input_files, inventory, write_json
+from .runtime import ROOT, check_layout, combine, compile_source, input_files, inventory, module_paths, write_json
 
 MANIFEST = 'build-manifest.json'
 
@@ -21,8 +21,9 @@ def generate(root, output):
     if oathkeeper.__version__ != manifest['engine_version']:
         raise ValueError('install the exact engine_version from oath-package.json')
     evidence = sources.catalog(root)  # Validate metadata; compilation never fetches evidence.
-    seattle = root / 'us/wa/seattle'
-    coverage = json.loads((seattle / 'coverage.json').read_text())
+    inputs = module_paths(root, 'seattle')
+    seattle = inputs['entrypoint'].parent
+    coverage = json.loads(inputs['coverage'].read_text())
     unresolved = {seattle / n for n in coverage['pending_cases'] + coverage['assessment_cases']}
     compiled = 0
     for path in input_files(root):
@@ -51,13 +52,13 @@ def generate(root, output):
     write_json(output / 'us/wa/seattle/oath.lock.json',
                {'format':'oathkeeper-import-lock/1','snapshot_sha256':c['snapshot_sha256'],'sources':c['lock']})
     packet = review_packet.packet(seattle)
-    packet['reviews'] = review_packet.validate_reviews(json.loads((seattle / 'review.json').read_text()), packet)
+    packet['reviews'] = review_packet.validate_reviews(json.loads(inputs['review'].read_text()), packet)
     write_json(output / 'us/wa/seattle/review-packet.json', packet)
     baseline = benchmark.evaluate(seattle)
     if baseline['passed'] != baseline['total']:
         raise ValueError('engineering baseline failed')
     write_json(output / 'us/wa/seattle/baseline.json', baseline)
-    audit_tax.audit(True, base=root / 'us/tax', output=output / 'us/tax', evidence=False)
+    audit_tax.audit(True, base=module_paths(root, 'ira2025')['entrypoint'].parent, output=output / 'us/tax', evidence=False)
     write_json(output / 'community/current.json', community_review.build(root))
     report = {'format':'oathkeeper.build/1', 'package':manifest['name'], 'package_version':manifest['version'],
               'engine_version':oathkeeper.__version__, 'inputs':inventory(root), 'files':inventory(output),

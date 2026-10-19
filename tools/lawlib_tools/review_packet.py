@@ -5,7 +5,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from .runtime import compile_source, DEFAULT
+from .runtime import compile_source, DEFAULT, module_paths, package_root
 
 
 def digest(value):
@@ -13,9 +13,10 @@ def digest(value):
 
 
 def packet(base=DEFAULT):
-    compilation = compile_source(base / "parking.oath")
-    notes = json.loads((base / "interpretations.json").read_text())
-    sources = json.loads((base / "sources.lock.json").read_text())["sources"]
+    inputs = module_paths(package_root(base), 'seattle')
+    compilation = compile_source(inputs['entrypoint'])
+    notes = json.loads(inputs['interpretations'].read_text())
+    sources = json.loads(inputs['sources'].read_text())["sources"]
     by_rule = {n["rule"]: n for n in notes["interpretations"]}
     rules = []
     for rule in compilation["module"]["rules"]:
@@ -84,7 +85,8 @@ def main():
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     current = packet(args.base)
-    current["reviews"] = validate_reviews(json.loads((args.base / "review.json").read_text()), current)
+    inputs = module_paths(package_root(args.base), 'seattle')
+    current["reviews"] = validate_reviews(json.loads(inputs['review'].read_text()), current)
     text = json.dumps(current, indent=2) + "\n"
     if args.output:
         args.output.write_text(text)

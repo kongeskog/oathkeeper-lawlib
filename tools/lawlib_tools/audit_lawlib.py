@@ -5,11 +5,10 @@ import json
 from pathlib import Path
 import oathkeeper
 from . import sources as evidence_store
-from .runtime import ROOT, DEFAULT, compile_source
+from .runtime import ROOT, DEFAULT, compile_source, module_paths, package_root
 
-def audit_sources(base: Path) -> dict:
-    base = base.resolve()
-    lock = json.loads((base / "sources.lock.json").read_text())
+def audit_sources(lock_path: Path) -> dict:
+    lock = json.loads(lock_path.read_text())
     if lock["format"] != "oathkeeper.sources/2":
         raise ValueError("unsupported source lock format")
     by_digest = {}
@@ -44,8 +43,9 @@ def check_references(value: object, sources: dict) -> None:
 
 
 def audit(base: Path, *, proofs: bool = True) -> dict:
-    sources = audit_sources(base)
-    coverage = json.loads((base / "coverage.json").read_text())
+    inputs = module_paths(package_root(base), 'seattle')
+    sources = audit_sources(inputs['sources'])
+    coverage = json.loads(inputs['coverage'].read_text())
     module_path = base / coverage["module"]
     authoring = module_path.suffix == ".oath"
     compilation = compile_source(module_path) if authoring else None
@@ -87,7 +87,7 @@ def audit(base: Path, *, proofs: bool = True) -> dict:
     if coverage.get("format") == "oathkeeper-coverage/3":
         from .review_packet import packet, validate_reviews
         current = packet(base)
-        reviews = validate_reviews(json.loads((base / "review.json").read_text()), current)
+        reviews = validate_reviews(json.loads(inputs['review'].read_text()), current)
     return {
         "sources_verified": len(sources), "formalized_rules": len(rule_ids),
         "cases_verified": checked, "coverage_complete": coverage["coverage_complete"],

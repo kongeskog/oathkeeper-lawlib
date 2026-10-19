@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from lawlib_tools import sources
 from lawlib_tools.build import archive, build
-from lawlib_tools.runtime import check_layout, inventory
+from lawlib_tools.runtime import check_layout, inventory, module_paths
 
 
 def entry(data=b'original evidence'):
@@ -92,6 +92,49 @@ class EvidenceTests(unittest.TestCase):
 
 
 class BuildTests(unittest.TestCase):
+    def test_metadata_and_scenarios_follow_manifest_when_moved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            clone=Path(tmp)/'corpus'
+            shutil.copytree(ROOT,clone,ignore=shutil.ignore_patterns('.git','.build','__pycache__','.venv'))
+            build(clone)
+            before=inventory(clone/'.build')
+            (clone/'metadata/us').rename(clone/'metadata/alternate')
+            (clone/'tests/scenarios/us').rename(clone/'tests/scenarios/alternate')
+            manifest_path=clone/'oath-package.json'
+            manifest=json.loads(manifest_path.read_text())
+            for module in manifest['modules']:
+                for key,value in module.items():
+                    if isinstance(value,str):
+                        module[key]=value.replace('metadata/us/','metadata/alternate/').replace('tests/scenarios/us/','tests/scenarios/alternate/')
+            manifest_path.write_text(json.dumps(manifest))
+            build(clone)
+            after=inventory(clone/'.build')
+            # The input inventory changes; legal artifacts and review digests do not.
+            self.assertNotEqual(before.pop('build-manifest.json'),after.pop('build-manifest.json'))
+            self.assertEqual(before,after)
+            manifest['modules'][0]['sources']='../outside.json'
+            manifest_path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError,'unsafe module input'):
+                module_paths(clone,'seattle')
+            manifest['modules'][0]['sources']='us/wa/seattle/sources.lock.json'
+            manifest_path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError,'must be under metadata'):
+                module_paths(clone,'seattle')
+
+    def test_legal_source_directories_cannot_accumulate_metadata_or_fixtures(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            (root/'us/tax').mkdir(parents=True)
+            (root/'us/wa/seattle').mkdir(parents=True)
+            (root/'us/tax/example.oath').write_text('// legal code')
+            (root/'us/README.md').write_text('Jurisdiction guide')
+            check_layout(root)
+            for name in ['us/tax/interpretations.json','us/wa/seattle/coverage.json','us/tax/scenarios/input.json']:
+                path=root/name;path.parent.mkdir(exist_ok=True);path.write_text('{}')
+                with self.assertRaisesRegex(ValueError,'only .oath and README.md'):
+                    check_layout(root)
+                path.unlink()
+
     def test_relocated_clean_builds_and_archives_are_identical(self):
         with tempfile.TemporaryDirectory() as tmp:
             clones=[]
