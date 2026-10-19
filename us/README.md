@@ -7,10 +7,9 @@ adds bounded 2025 allocation rules and two proof paths from the real *Shank* mat
 Community review remains pending. Expansion should be narrow, sourced, and
 reviewed for legal fidelity and formal correctness.
 
-Source inventories, interpretation notes and review records live in
-[`metadata/us/`](../metadata/us/). Synthetic inputs live in
-[`tests/scenarios/us/`](../tests/scenarios/us/). The root package manifest connects them
-to their `.oath` entrypoints.
+Interpretation explanations are next to their rules in `.oath`. The shared
+[source catalog](../sources.lock.json) records evidence, and [community reviews](../community/README.md)
+record actual statements. Synthetic inputs live in [tests/scenarios](../tests/scenarios/).
 
 US authority is not simply a geographical inheritance tree. Federal, state,
 tribal, local, administrative, and private authority interact in different ways.

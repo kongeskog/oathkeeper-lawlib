@@ -9,6 +9,7 @@ import tarfile
 import tempfile
 
 import oathkeeper
+from . import reports
 from . import audit_tax, benchmark, community_review, review_packet, sources
 from .runtime import ROOT, check_layout, combine, compile_source, input_files, inventory, module_paths, write_json
 
@@ -23,7 +24,7 @@ def generate(root, output):
     evidence = sources.catalog(root)  # Validate metadata; compilation never fetches evidence.
     inputs = module_paths(root, 'seattle')
     seattle = inputs['entrypoint'].parent
-    coverage = json.loads(inputs['coverage'].read_text())
+    coverage = reports.coverage(root, 'seattle')
     unresolved = {seattle / n for n in coverage['pending_cases'] + coverage['assessment_cases']}
     compiled = 0
     for path in input_files(root):
@@ -51,8 +52,14 @@ def generate(root, output):
     c = compile_source(seattle / 'parking.oath')
     write_json(output / 'us/wa/seattle/oath.lock.json',
                {'format':'oathkeeper-import-lock/1','snapshot_sha256':c['snapshot_sha256'],'sources':c['lock']})
+    write_json(output / 'us/wa/seattle/coverage.json', coverage)
+    for module_id in ('seattle', 'ira2025', 'shank'):
+        entry = module_paths(root, module_id)['entrypoint']
+        directory = output / entry.relative_to(root).parent
+        write_json(directory / 'sources.lock.json', reports.source_document(root, module_id))
+        write_json(directory / (entry.stem + '.interpretations.json'), reports.interpretations(compile_source(entry)))
     packet = review_packet.packet(seattle)
-    packet['reviews'] = review_packet.validate_reviews(json.loads(inputs['review'].read_text()), packet)
+    packet['reviews'] = review_packet.current_reviews(seattle)
     write_json(output / 'us/wa/seattle/review-packet.json', packet)
     baseline = benchmark.evaluate(seattle)
     if baseline['passed'] != baseline['total']:

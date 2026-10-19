@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from .reports import interpretations, source_document
 from .runtime import compile_source, DEFAULT, module_paths, package_root
 
 
@@ -15,8 +16,8 @@ def digest(value):
 def packet(base=DEFAULT):
     inputs = module_paths(package_root(base), 'seattle')
     compilation = compile_source(inputs['entrypoint'])
-    notes = json.loads(inputs['interpretations'].read_text())
-    sources = json.loads(inputs['sources'].read_text())["sources"]
+    notes = interpretations(compilation)
+    sources = source_document(package_root(base), 'seattle')["sources"]
     by_rule = {n["rule"]: n for n in notes["interpretations"]}
     rules = []
     for rule in compilation["module"]["rules"]:
@@ -42,6 +43,11 @@ def packet(base=DEFAULT):
         "independent_review": "pending; generating this packet does not perform review",
         "digest_algorithm": "sha256 of UTF-8 JSON with sorted object keys and compact separators for rule_sha256; native compilation digest for module snapshot",
     }
+
+
+def current_reviews(base=DEFAULT):
+    from .community_review import build
+    return next(m['reviews'] for m in build(package_root(base))['modules'] if m['id'] == 'seattle')
 
 
 def validate_reviews(review, current):
@@ -86,7 +92,7 @@ def main():
     args = parser.parse_args()
     current = packet(args.base)
     inputs = module_paths(package_root(args.base), 'seattle')
-    current["reviews"] = validate_reviews(json.loads(inputs['review'].read_text()), current)
+    current["reviews"] = current_reviews(args.base)
     text = json.dumps(current, indent=2) + "\n"
     if args.output:
         args.output.write_text(text)

@@ -1,0 +1,17 @@
+{
+  "seattle": {
+    "cases": [
+      "cases/long-ability-to-pay.case.oath",
+      "cases/long-excessive-fines.case.oath",
+      "cases/long-homestead.case.oath",
+      "cases/long-no-automatic-impoundment-bar.case.oath",
+      "cases/long-statutory-framework.case.oath"
+    ],
+    "pending_cases": [
+      "cases/long-oracle-reassessment.case.oath"
+    ],
+    "assessment_cases": [
+      "cases/long-parking-evidence-review.case.oath"
+    ]
+  }
+}

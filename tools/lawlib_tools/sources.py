@@ -47,25 +47,27 @@ def catalog(root=ROOT, modules=None, selected=None):
     module_ids = {m['id'] for m in manifest['modules']}
     if modules and set(modules) - module_ids:
         raise ValueError('unknown module: ' + ', '.join(sorted(set(modules) - module_ids)))
-    locks = sorted({m['sources'] for m in manifest['modules'] if not modules or m['id'] in modules})
+    lock_path = root / 'sources.lock.json'
+    if lock_path.is_symlink():
+        raise ValueError('source catalog cannot be a symlink')
+    lock = json.loads(lock_path.read_text())
+    if lock.get('format') != 'oathkeeper.sources/2':
+        raise ValueError('unsupported source lock; expected oathkeeper.sources/2')
     sources = {}
-    for filename in locks:
-        lock_path = root / filename
-        if not lock_path.resolve().is_relative_to(root.resolve()) or lock_path.is_symlink():
-            raise ValueError('source manifest escapes package')
-        lock = json.loads(lock_path.read_text())
-        if lock.get('format') != 'oathkeeper.sources/2':
-            raise ValueError('unsupported source lock; expected oathkeeper.sources/2')
-        seen = set()
-        for source in lock['sources']:
-            validate(source)
-            if source['id'] in seen:
-                raise ValueError('duplicate source ID in manifest')
-            seen.add(source['id'])
-            prior = sources.get(source['sha256'])
-            if prior and (prior['size_bytes'], prior['media_type']) != (source['size_bytes'], source['media_type']):
-                raise ValueError('conflicting metadata for the same evidence digest')
-            sources.setdefault(source['sha256'], source)
+    seen = set()
+    for source in lock['sources']:
+        validate(source)
+        if source['id'] in seen:
+            raise ValueError('duplicate source ID in catalog')
+        seen.add(source['id'])
+        if not source.get('modules') or set(source['modules']) - module_ids:
+            raise ValueError('source must name known package modules')
+        prior = sources.get(source['sha256'])
+        if prior:
+            raise ValueError('duplicate source digest in catalog')
+        sources[source['sha256']] = source
+    if modules:
+        sources = {h:s for h,s in sources.items() if set(s['modules']) & set(modules)}
     if selected:
         unknown = set(selected) - {s['id'] for s in sources.values()} - set(sources)
         if unknown:

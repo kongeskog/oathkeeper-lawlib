@@ -1,0 +1,192 @@
+{
+  "format": "oathkeeper.sources/2",
+  "sources": [
+    {
+      "id": "long-2021",
+      "file": "sources/long-2021-opinion.txt",
+      "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56",
+      "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+      "official_uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+      "retrieved_at": "2026-10-18T19:47:18Z",
+      "representation": "UTF-8 judicial opinion extracted only from the Justia HTML noframes element; HTML entities decoded and whitespace collapsed with single spaces; LF terminated",
+      "source_status": "Archived mirrored original slip text used by 0.2/0.3 fixtures. Canonical 0.4 rules now cite the directly retrieved official slip PDF. Final reporter reconciliation remains pending.",
+      "rights": "Judicial opinion text; government edict. Justia editorial summaries and website markup excluded.",
+      "extractor": "html_noframes_normalized",
+      "size_bytes": 80571,
+      "media_type": "text/plain",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56.txt"
+      ],
+      "modules": [
+        "seattle"
+      ]
+    },
+    {
+      "id": "timbs-2019",
+      "file": "sources/timbs-2019.pdf",
+      "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b",
+      "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+      "official_uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+      "retrieved_at": "2026-10-18T19:47:18Z",
+      "representation": "Original PDF bytes from Supreme Court website",
+      "source_status": "Supreme Court slip opinion with syllabus and separately identified concurrences; rules cite the opinion of the Court, not the syllabus.",
+      "rights": "United States government judicial opinion; public-domain government edict.",
+      "extractor": "identity",
+      "size_bytes": 158740,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b.pdf",
+        "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf"
+      ],
+      "modules": [
+        "seattle"
+      ]
+    },
+    {
+      "id": "ordinance-120573",
+      "file": "sources/ordinance-120573.pdf",
+      "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d",
+      "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+      "official_uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+      "retrieved_at": "2026-10-18T19:47:18Z",
+      "representation": "Original scan PDF bytes from Seattle City Clerk archive",
+      "source_status": "Signed ordinance plus archival attachments. Signature page: passed October 22, approved October 29, filed October 30, 2001. Section 2 provides thirty days after mayoral approval; modeled effective date November 28, 2001, Seattle local time.",
+      "rights": "Enacted ordinance is a government edict. Archival attachments retain any applicable rights; no Apache relicensing claim is made for source scans.",
+      "extractor": "identity",
+      "size_bytes": 2981177,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d.pdf",
+        "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf"
+      ],
+      "modules": [
+        "seattle"
+      ]
+    },
+    {
+      "id": "long-2021-official-slip",
+      "file": "sources/long-2021-official-slip.pdf",
+      "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa",
+      "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+      "official_uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+      "retrieved_at": "2026-10-18T22:35:39Z",
+      "representation": "Original PDF bytes retrieved directly from Washington Courts",
+      "source_status": "Canonical 0.4 Long source: original judicial slip opinion. Its notice states that a revised official-reporter opinion replaces it. Final-text reconciliation is pending; historical reconstruction only.",
+      "rights": "Judicial opinion; government edict. No claim that third-party annotations are licensed.",
+      "extractor": "identity",
+      "size_bytes": 777487,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa.pdf",
+        "https://www.courts.wa.gov/opinions/pdf/988242.pdf"
+      ],
+      "modules": [
+        "seattle"
+      ]
+    },
+    {
+      "id": "form8606",
+      "file": "sources/f8606-2025.pdf",
+      "citation": "IRS Form 8606 (2025)",
+      "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+      "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae",
+      "retrieved_at": "2026-10-18T23:21:21Z",
+      "provenance": "official",
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+      "size_bytes": 96165,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae.pdf",
+        "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license.",
+      "modules": [
+        "ira2025",
+        "shank"
+      ]
+    },
+    {
+      "id": "instructions8606",
+      "file": "sources/i8606-2025.pdf",
+      "citation": "IRS Instructions for Form 8606 (2025)",
+      "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+      "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
+      "retrieved_at": "2026-10-18T23:21:21Z",
+      "provenance": "official",
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+      "size_bytes": 315925,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f.pdf",
+        "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license.",
+      "modules": [
+        "ira2025",
+        "shank"
+      ]
+    },
+    {
+      "id": "publication590a",
+      "file": "sources/p590a-2025.pdf",
+      "citation": "IRS Publication 590-A (2025)",
+      "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+      "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
+      "retrieved_at": "2026-10-18T23:21:21Z",
+      "provenance": "official",
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+      "size_bytes": 1817459,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7.pdf",
+        "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license.",
+      "modules": [
+        "ira2025",
+        "shank"
+      ]
+    },
+    {
+      "id": "notice202480",
+      "file": "sources/notice2024-80.pdf",
+      "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+      "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+      "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad",
+      "retrieved_at": "2026-10-18T23:21:21Z",
+      "provenance": "official",
+      "retrieval_uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+      "size_bytes": 123240,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad.pdf",
+        "https://www.irs.gov/pub/irs-drop/n-24-80.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license.",
+      "modules": [
+        "ira2025",
+        "shank"
+      ]
+    },
+    {
+      "id": "shank2018",
+      "file": "sources/shank-2018-official.pdf",
+      "citation": "Shank v. Commissioner, T.C. Memo. 2018-33 (Mar. 20, 2018), No. 1752-17",
+      "uri": "https://dawson.ustaxcourt.gov/case-detail/1752-17",
+      "sha256": "94612d7eb8696cb883d356b49caf2129b517b088f68b4dd4d705e75724afec0e",
+      "retrieved_at": "2026-10-18T23:21:21Z",
+      "provenance": "official",
+      "retrieval_uri": "https://public-api.dawson.ustaxcourt.gov/public-api/1752-17/f3cc3c7f-9768-473c-bbfe-cf926172f656/public-document-download-url",
+      "size_bytes": 453076,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/94612d7eb8696cb883d356b49caf2129b517b088f68b4dd4d705e75724afec0e.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license.",
+      "modules": [
+        "ira2025",
+        "shank"
+      ]
+    }
+  ]
+}

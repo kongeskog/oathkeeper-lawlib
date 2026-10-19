@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import oathkeeper
+from .reports import interpretations, source_document
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -17,8 +18,8 @@ def build(base):
     for entry in package['modules']:
         compilation=json.loads(oathkeeper.compile_file(str(base/entry['entrypoint'])))
         artifact={'module_snapshot_sha256':compilation['snapshot_sha256'],
-                  'interpretations':json.loads((base/entry['interpretations']).read_text()),
-                  'sources':json.loads((base/entry['sources']).read_text())}
+                  'interpretations':interpretations(compilation),
+                  'sources':source_document(base, entry['id'])}
         artifact_hash=request('digest',value=artifact)['sha256']
         records.append({'id':entry['id'],'entrypoint':entry['entrypoint'],'module_snapshot_sha256':compilation['snapshot_sha256'],
                         'coverage':compilation['module'].get('coverage',[]),

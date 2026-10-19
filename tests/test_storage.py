@@ -92,34 +92,64 @@ class EvidenceTests(unittest.TestCase):
 
 
 class BuildTests(unittest.TestCase):
-    def test_metadata_and_scenarios_follow_manifest_when_moved(self):
+    def test_scenarios_follow_manifest_when_moved(self):
         with tempfile.TemporaryDirectory() as tmp:
             clone=Path(tmp)/'corpus'
             shutil.copytree(ROOT,clone,ignore=shutil.ignore_patterns('.git','.build','__pycache__','.venv'))
             build(clone)
             before=inventory(clone/'.build')
-            (clone/'metadata/us').rename(clone/'metadata/alternate')
             (clone/'tests/scenarios/us').rename(clone/'tests/scenarios/alternate')
             manifest_path=clone/'oath-package.json'
             manifest=json.loads(manifest_path.read_text())
             for module in manifest['modules']:
                 for key,value in module.items():
                     if isinstance(value,str):
-                        module[key]=value.replace('metadata/us/','metadata/alternate/').replace('tests/scenarios/us/','tests/scenarios/alternate/')
+                        module[key]=value.replace('tests/scenarios/us/','tests/scenarios/alternate/')
             manifest_path.write_text(json.dumps(manifest))
             build(clone)
             after=inventory(clone/'.build')
             # The input inventory changes; legal artifacts and review digests do not.
             self.assertNotEqual(before.pop('build-manifest.json'),after.pop('build-manifest.json'))
             self.assertEqual(before,after)
-            manifest['modules'][0]['sources']='../outside.json'
+            manifest['modules'][0]['entrypoint']='../outside.oath'
             manifest_path.write_text(json.dumps(manifest))
             with self.assertRaisesRegex(ValueError,'unsafe module input'):
                 module_paths(clone,'seattle')
-            manifest['modules'][0]['sources']='us/wa/seattle/sources.lock.json'
-            manifest_path.write_text(json.dumps(manifest))
-            with self.assertRaisesRegex(ValueError,'must be under metadata'):
-                module_paths(clone,'seattle')
+
+    def test_documentation_follows_compiler_spans_and_invalidates_review(self):
+        from lawlib_tools.reports import interpretations
+        from lawlib_tools.runtime import compile_source
+        from lawlib_tools.community_review import build as reviews
+        with tempfile.TemporaryDirectory() as tmp:
+            clone=Path(tmp)/'corpus'
+            shutil.copytree(ROOT,clone,ignore=shutil.ignore_patterns('.git','.build','__pycache__','.venv'))
+            source=clone/'us/tax/backdoor-roth-2025.oath'
+            before=compile_source(source)
+            review_before=reviews(clone)
+            source.write_text(source.read_text().replace('/// 2025 only.', '/// Documented clarification: 2025 only.'))
+            after=compile_source(source)
+            self.assertEqual(before['module'],after['module'])
+            self.assertNotEqual(before['snapshot_sha256'],after['snapshot_sha256'])
+            self.assertIn('Documented clarification:',interpretations(after)['interpretations'][0]['interpretation'])
+            self.assertNotEqual(review_before['modules'][1]['reviews']['artifact_sha256'],reviews(clone)['modules'][1]['reviews']['artifact_sha256'])
+            # Imported rule documentation is extracted from its own file.
+            seattle=interpretations(compile_source(clone/'us/wa/seattle/parking.oath'))
+            timbs=next(n for n in seattle['interpretations'] if n['rule']=='us.timbs.incorporation')
+            self.assertTrue(timbs['interpretation'].startswith('Timbs holds incorporation'))
+            self.assertEqual(timbs['premise_mapping'][0]['role'],'explicit applicability assumption')
+
+    def test_cases_cannot_silently_disappear_from_regressions(self):
+        from lawlib_tools.reports import coverage
+        with tempfile.TemporaryDirectory() as tmp:
+            clone=Path(tmp)/'corpus'
+            shutil.copytree(ROOT,clone,ignore=shutil.ignore_patterns('.git','.build','__pycache__','.venv'))
+            path=clone/'tests/expectations.json'
+            data=json.loads(path.read_text())
+            data['seattle']['cases'].pop()
+            path.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError,'cover every case'):
+                coverage(clone,'seattle')
+
 
     def test_legal_source_directories_cannot_accumulate_metadata_or_fixtures(self):
         with tempfile.TemporaryDirectory() as tmp:

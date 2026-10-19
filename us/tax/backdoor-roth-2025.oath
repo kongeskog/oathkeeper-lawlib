@@ -62,6 +62,9 @@ authority us.tax.notice202480 {
   publication published; decided_at null; source notice202480;
 }
 
+/// 2025 only. Regular traditional and Roth contributions share the annual limit. Compensation is
+/// checked separately; no spousal compensation rule is modeled.
+///
 rule us.tax.2025.limit-under50(person: Taxpayer, age: integer) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -80,6 +83,8 @@ assessment us.tax.2025.limit-under50.assessment {
   source publication590a; rationale "2025 only. Regular traditional and Roth contributions share the annual limit. Compensation is checked separately; no spousal compensation rule is modeled. Independent tax-professional and formalization review pending.";
 }
 
+/// Age at the end of 2025; the catch-up limit is 8000 dollars, not the different 2026 limit.
+///
 rule us.tax.2025.limit-50plus(person: Taxpayer, age: integer) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -97,6 +102,10 @@ assessment us.tax.2025.limit-50plus.assessment {
   source publication590a; rationale "Age at the end of 2025; the catch-up limit is 8000 dollars, not the different 2026 limit. Independent tax-professional and formalization review pending.";
 }
 
+/// A conditional amount-limit check. Scope supplies timely eligible contributions and designation
+/// as nondeductible. No deduction, direct-Roth MAGI test, spousal IRA rule, or overall tax
+/// optimization is inferred.
+///
 rule us.tax.2025.contribution-limit(person: Taxpayer, contribution: quantity(usd_cent), other: quantity(usd_cent), total: quantity(usd_cent), limit: quantity(usd_cent), compensation: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -122,6 +131,9 @@ assessment us.tax.2025.contribution-limit.assessment {
   source publication590a; rationale "A conditional amount-limit check. Scope supplies timely eligible contributions and designation as nondeductible. No deduction, direct-Roth MAGI test, spousal IRA rule, or overall tax optimization is inferred. Independent tax-professional and formalization review pending.";
 }
 
+/// Prior basis is supplied from records, never inferred to be zero from missing Form 8606. Scope
+/// excludes basis adjustments and other current-year deductible traditional contributions.
+///
 rule us.tax.2025.total-basis(person: Taxpayer, contribution: quantity(usd_cent), prior: quantity(usd_cent), total: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -141,6 +153,9 @@ assessment us.tax.2025.total-basis.assessment {
   source form8606; rationale "Prior basis is supplied from records, never inferred to be zero from missing Form 8606. Scope excludes basis adjustments and other current-year deductible traditional contributions. Independent tax-professional and formalization review pending.";
 }
 
+/// 2025-designated contributions made January 1 through April 15, 2026 are removed from basis
+/// available for 2025 conversions. No disaster-deadline relief is modeled.
+///
 rule us.tax.2025.available-basis(person: Taxpayer, contribution: quantity(usd_cent), total: quantity(usd_cent), late: quantity(usd_cent), available: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -162,6 +177,10 @@ assessment us.tax.2025.available-basis.assessment {
   source form8606; rationale "2025-designated contributions made January 1 through April 15, 2026 are removed from basis available for 2025 conversions. No disaster-deadline relief is modeled. Independent tax-professional and formalization review pending.";
 }
 
+/// Scope requires the owner's combined traditional, traditional SEP and traditional SIMPLE IRA
+/// balances at all custodians. No spouse's IRA or employer 401(k) balance. Line 7 and special line
+/// 6 adjustments are zero by explicit scope assumption.
+///
 rule us.tax.2025.aggregate-pool(person: Taxpayer, balance: quantity(usd_cent), converted: quantity(usd_cent), pool: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -182,6 +201,11 @@ assessment us.tax.2025.aggregate-pool.assessment {
   source form8606; rationale "Scope requires the owner's combined traditional, traditional SEP and traditional SIMPLE IRA balances at all custodians. No spouse's IRA or employer 401(k) balance. Line 7 and special line 6 adjustments are zero by explicit scope assumption. Independent tax-professional and formalization review pending.";
 }
 
+/// Exact rational allocation capped at one, then rounded once to nearest cent with ties up. This is
+/// an allocation estimate, not a completed Form 8606: the form permits a decimal ratio rounded to
+/// at least three places and filing rounding can differ. The arithmetic convention is explicit and
+/// requires independent formalization review.
+///
 rule us.tax.2025.nontaxable-allocation(person: Taxpayer, converted: quantity(usd_cent), basis: quantity(usd_cent), pool: quantity(usd_cent), nontaxable: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -202,6 +226,9 @@ assessment us.tax.2025.nontaxable-allocation.assessment {
   source form8606; rationale "Exact rational allocation capped at one, then rounded once to nearest cent with ties up. This is an allocation estimate, not a completed Form 8606: the form permits a decimal ratio rounded to at least three places and filing rounding can differ. The arithmetic convention is explicit and requires independent formalization review. Independent tax-professional and formalization review pending.";
 }
 
+/// Amount included in income estimate, not tax owed. Rates, penalties, credits, Medicare effects,
+/// state taxes and future Roth withdrawals are outside scope.
+///
 rule us.tax.2025.taxable-allocation(person: Taxpayer, converted: quantity(usd_cent), nontaxable: quantity(usd_cent), taxable: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -220,6 +247,9 @@ assessment us.tax.2025.taxable-allocation.assessment {
   source form8606; rationale "Amount included in income estimate, not tax owed. Rates, penalties, credits, Medicare effects, state taxes and future Roth withdrawals are outside scope. Independent tax-professional and formalization review pending.";
 }
 
+/// Includes 2025-designated contributions made in early 2026. No other distributions or
+/// adjustments; shares the allocation rounding convention.
+///
 rule us.tax.2025.carryforward-basis(person: Taxpayer, total: quantity(usd_cent), nontaxable: quantity(usd_cent), remaining: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";
@@ -238,6 +268,10 @@ assessment us.tax.2025.carryforward-basis.assessment {
   source form8606; rationale "Includes 2025-designated contributions made in early 2026. No other distributions or adjustments; shares the allocation rounding convention. Independent tax-professional and formalization review pending.";
 }
 
+/// Summarizes one bounded conditional calculation. IRS guidance is classified as administrative
+/// guidance, with persuasive model assessments rather than binding legislation. Neither input
+/// authenticity nor legal fidelity is established by proof replay.
+///
 rule us.tax.2025.allocation-summary(person: Taxpayer, nontaxable: quantity(usd_cent), taxable: quantity(usd_cent), remaining: quantity(usd_cent)) @ "1" {
   time_basis law_time; jurisdiction "us";
   effective_from "2025-01-01T00:00:00Z"; effective_until "2026-01-01T00:00:00Z";

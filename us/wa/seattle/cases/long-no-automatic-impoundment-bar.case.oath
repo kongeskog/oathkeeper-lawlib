@@ -1,6 +1,6 @@
 oathkeeper "0.5";
 case long-no-automatic-impoundment-bar @ "0.5.0";
-import "../parking.oath" sha256 "8362375214409d65467b545ed0255082b512a5d7a8ab3176ab2a6dfc5e3c0533";
+import "../parking.oath" sha256 "b28fc3be3cd9418d784df1fee96ecb75b8a4acb92645774b04463a5985aed1fa";
 
 constant long.98824-2: Matter;
 

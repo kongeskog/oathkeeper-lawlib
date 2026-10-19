@@ -20,7 +20,7 @@ def audit(write=False, *, base=BASE, output=None, evidence=True):
     inputs = module_paths(package_root(base), 'ira2025')
     output = output or ROOT / ".build/us/tax"
     hashes={}
-    source_inventory = json.loads(inputs['sources'].read_text())["sources"]
+    source_inventory = sources.catalog(package_root(base), ['ira2025'])
     for source in source_inventory:
         sources.validate(source)
         if evidence:

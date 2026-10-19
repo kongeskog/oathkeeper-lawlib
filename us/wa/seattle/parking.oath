@@ -1,6 +1,6 @@
 oathkeeper "0.5";
 module lawlib.us.wa.seattle.parking.long @ "0.5.0";
-import "../long.oath" sha256 "322c4077305290abe30528a099699c81bb8dd83340dc093665117ad2720cd1b3";
+import "../long.oath" sha256 "6199bfac5bbd502c7eed9454a097695679ca3b9b094ccf0fb232f65133181ccc";
 
 jurisdiction us.wa.seattle {
   name "Seattle";
@@ -22,6 +22,21 @@ authority us.wa.seattle.ord120573 {
   decided_at null;
 }
 
+/// Historical SMC 11.72.440(B)-(D), one identified parking episode. Every qualification requires
+/// explicit evidence; this sufficient argument does not allocate legal burdens. Duration may be a
+/// sourced observation or a checked quantity comparison. Other-law applicability remains an
+/// explicit interpretation assumption. Independent legal and formalization review pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.72hours.ordinary-branch(matter: Matter) @ "3" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -46,6 +61,21 @@ rule seattle.parking.72hours.ordinary-branch(matter: Matter) @ "3" {
   ensures parking.violates_smc72($matter);
 }
 
+/// The text supplies an impoundment framework subject to Chapter 11.30 and constitutional limits.
+/// This is not a conclusion that a particular tow or charge is lawful. This is a machine-assisted
+/// historical assessment at the Long decision snapshot, not an independently reviewed citator
+/// result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.impoundment-framework(matter: Matter) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -64,6 +94,22 @@ rule seattle.parking.impoundment-framework(matter: Matter) @ "1" {
   ensures parking.subject_to_ch11_30_impoundment($matter);
 }
 
+/// Subsection C excludes authorized vehicles on municipal property from this section. Authorization
+/// and location are explicit supplied premises. The negative conclusion concerns only SMC
+/// 11.72.440, not other parking laws or general permission to park. This is a machine-assisted
+/// interpretation of the pinned historical text; separate legal and formalization reviews remain
+/// pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.authorized-vehicle-exclusion(matter: Matter, vehicle: Vehicle) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -84,6 +130,22 @@ rule seattle.parking.authorized-vehicle-exclusion(matter: Matter, vehicle: Vehic
   ensures parking.smc72_c_excluded($matter);
 }
 
+/// Subsection C excludes authorized vehicles on municipal property from this section. Authorization
+/// and location are explicit supplied premises. The negative conclusion concerns only SMC
+/// 11.72.440, not other parking laws or general permission to park. This is a machine-assisted
+/// interpretation of the pinned historical text; separate legal and formalization reviews remain
+/// pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.excluded-no-section-violation(matter: Matter) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -159,6 +221,21 @@ assessment seattle.parking.excluded-no-section-violation.assessment.2021-08-13 {
 }
 
 
+/// Seventy-two elapsed hours equals 259200000 milliseconds. Exact integer units, strict
+/// greater-than, no rounding or implicit unit conversion. This arithmetic implementation does not
+/// independently establish elapsed parking time. Independent legal and formalization review
+/// pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.duration-threshold(matter: Matter, duration: quantity(ms)) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -187,6 +264,20 @@ assessment seattle.parking.duration-threshold.assessment.2021-08-13 {
   rationale "Seventy-two elapsed hours equals 259200000 milliseconds. Exact integer units, strict greater-than, no rounding or implicit unit conversion. This arithmetic implementation does not independently establish elapsed parking time. Independent legal and formalization review pending.";
 }
 
+/// Subsection D excludes junk motor vehicles from this section. The chapter definition and
+/// classification are supplied premises, not independently formalized here. Independent legal and
+/// formalization review pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.junk-vehicle-exclusion(matter: Matter) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";
@@ -214,6 +305,20 @@ assessment seattle.parking.junk-vehicle-exclusion.assessment.2021-08-13 {
   rationale "Subsection D excludes junk motor vehicles from this section. The chapter definition and classification are supplied premises, not independently formalized here. Independent legal and formalization review pending.";
 }
 
+/// Subsection D excludes abandoned junk motor vehicles from this section. This conclusion concerns
+/// this section only; it does not grant general permission or prevent towing under other authority.
+/// Independent legal and formalization review pending.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: What counts as authorization
+/// Omitted: Chapter definitions of both junk-vehicle categories
+/// Omitted: Other-law applicability and full authority inventory
+/// Omitted: Posted-sign enforcement under subsection A
+/// Omitted: Impoundment procedure under Chapter 11.30
 rule seattle.parking.abandoned-junk-exclusion(matter: Matter) @ "1" {
   time_basis law_time;
   jurisdiction "us.wa.seattle";

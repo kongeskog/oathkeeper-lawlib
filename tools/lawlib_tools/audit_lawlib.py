@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import oathkeeper
 from . import sources as evidence_store
+from .reports import coverage as coverage_report
 from .runtime import ROOT, DEFAULT, compile_source, module_paths, package_root
 
 def audit_sources(lock_path: Path) -> dict:
@@ -44,8 +45,9 @@ def check_references(value: object, sources: dict) -> None:
 
 def audit(base: Path, *, proofs: bool = True) -> dict:
     inputs = module_paths(package_root(base), 'seattle')
-    sources = audit_sources(inputs['sources'])
-    coverage = json.loads(inputs['coverage'].read_text())
+    sources = {s['sha256']: s for s in evidence_store.catalog(package_root(base), ['seattle'])}
+    for source in sources.values(): evidence_store.require(source)
+    coverage = coverage_report(package_root(base), 'seattle')
     module_path = base / coverage["module"]
     authoring = module_path.suffix == ".oath"
     compilation = compile_source(module_path) if authoring else None
@@ -85,9 +87,8 @@ def audit(base: Path, *, proofs: bool = True) -> dict:
             assessed.append({"case":case_name,"status":result["status"],"open_requirements":len(result["open_requirements"])})
     reviews = None
     if coverage.get("format") == "oathkeeper-coverage/3":
-        from .review_packet import packet, validate_reviews
-        current = packet(base)
-        reviews = validate_reviews(json.loads(inputs['review'].read_text()), current)
+        from .review_packet import current_reviews
+        reviews = current_reviews(base)
     return {
         "sources_verified": len(sources), "formalized_rules": len(rule_ids),
         "cases_verified": checked, "coverage_complete": coverage["coverage_complete"],

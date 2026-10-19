@@ -1,6 +1,6 @@
 oathkeeper "0.5";
 module lawlib.us.wa.long @ "0.5.0";
-import "../timbs.oath" sha256 "909c5ae31f0029536f0e444fd781068f98453871ba2db2da10cd0a1238db90fd";
+import "../timbs.oath" sha256 "5c9aef3ebd91726f1d35d535ed912cc5e084e35d853175150adac8c37867b5f1";
 
 jurisdiction us.wa {
   name "Washington";
@@ -22,6 +22,19 @@ authority us.wa.sc.long.2021 {
   decided_at "2021-08-12T15:00:00Z";
 }
 
+/// Long characterizes the particular statutory impoundment and associated costs as partially
+/// punitive; the rule is limited by the declared Long/SMC72 sanction scope. This is a
+/// machine-assisted historical assessment at the Long decision snapshot, not an independently
+/// reviewed citator result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.partially-punitive(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";
@@ -41,6 +54,19 @@ rule wa.long.partially-punitive(matter: Matter) @ "1" {
   ensures sanction.partially_punitive($matter);
 }
 
+/// A governmental extraction as punishment at least in part qualifies for excessive-fines scrutiny;
+/// qualifying as a fine does not establish excessiveness. This is a machine-assisted historical
+/// assessment at the Long decision snapshot, not an independently reviewed citator result or a
+/// statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.qualifying-fine(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";
@@ -61,6 +87,19 @@ rule wa.long.qualifying-fine(matter: Matter) @ "1" {
   ensures sanction.qualifying_fine($matter);
 }
 
+/// The violation rule requires a separately established gross-disproportionality judgment. That
+/// judgment cannot be obtained from poverty or a numerical fine threshold alone. This is a
+/// machine-assisted historical assessment at the Long decision snapshot, not an independently
+/// reviewed citator result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.gross-disproportionality(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";
@@ -80,6 +119,19 @@ rule wa.long.gross-disproportionality(matter: Matter) @ "1" {
   ensures constitutional.excessive_fines_violation($matter);
 }
 
+/// Long requires consideration of ability to pay as part of its disproportionality analysis. This
+/// is a Washington Supreme Court holding; it is not attributed to Timbs as a nationwide Supreme
+/// Court holding. This is a machine-assisted historical assessment at the Long decision snapshot,
+/// not an independently reviewed citator result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.ability-to-pay(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";
@@ -98,6 +150,19 @@ rule wa.long.ability-to-pay(matter: Matter) @ "1" {
   ensures analysis.consider_ability_to_pay($matter);
 }
 
+/// Long interprets RCW 6.13.040(1) to recognize automatic protection for occupied personal property
+/// used as the owner principal residence. This rule does not decide exemption amounts or all
+/// statutory exceptions. This is a machine-assisted historical assessment at the Long decision
+/// snapshot, not an independently reviewed citator result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.homestead-no-declaration(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";
@@ -116,6 +181,20 @@ rule wa.long.homestead-no-declaration(matter: Matter) @ "1" {
   ensures not homestead.additional_declaration_required($matter);
 }
 
+/// The majority distinguishes homestead protections at debt enforcement from independent parking
+/// impoundment authority. This does not endorse the broader concurring view as a majority holding
+/// and does not authorize unconstitutional impoundments. This is a machine-assisted historical
+/// assessment at the Long decision snapshot, not an independently reviewed citator result or a
+/// statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule wa.long.no-automatic-impoundment-bar(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us.wa";

@@ -60,8 +60,7 @@ def main():
         subprocess.run(['git','-C',str(root),'fetch','--depth=1','origin',args.from_revision],check=True)
         paths={}
         for module in package['modules']:
-            lock=root/module['sources']
-            for entry in json.loads(lock.read_text())['sources']:
+            for entry in sources.catalog(root, [module['id']]):
                 # Before evidence moved out of Git, snapshots were alongside
                 # legal code. Metadata now lives in its own directory.
                 paths[entry['sha256']]=(Path(module['entrypoint']).parent/entry['file']).as_posix()

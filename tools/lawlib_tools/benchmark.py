@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import time
 import oathkeeper
+from .reports import coverage as coverage_report
 from .runtime import module_paths, package_root
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -21,7 +22,7 @@ def bundle(path):
 
 def cases(base=BASE):
     BASE = base
-    coverage = json.loads(module_paths(package_root(base), 'seattle')['coverage'].read_text())
+    coverage = coverage_report(package_root(base), 'seattle')
     for path in coverage["cases"]:
         yield {"id":Path(path).stem,"origin":"historical_reconstruction","group":"long-98824-2","expected":"supported","context":bundle(BASE/path),"judicial_findings_supplied":True,"evaluation_use":"reconstruction, not outcome prediction"}
     for path in coverage["assessment_cases"] + coverage["pending_cases"]:

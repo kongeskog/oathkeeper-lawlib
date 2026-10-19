@@ -22,6 +22,18 @@ authority us.scotus.timbs.2019 {
   decided_at "2019-02-20T00:00:00Z";
 }
 
+/// Timbs holds incorporation of the Excessive Fines Clause, not that every fine or every forfeiture
+/// is excessive. This is a machine-assisted historical assessment at the Long decision snapshot,
+/// not an independently reviewed citator result or a statement of current validity.
+///
+/// Scope: One identified issue or parking episode under the selected historical law and forum.
+///
+/// Alternative readings: No independent reviewer has catalogued alternative readings; absence of
+/// entries is not agreement.
+///
+/// Omitted: New-case analogy and distinguishing facts
+/// Omitted: Subsequent treatment and final-reporter reconciliation
+/// Omitted: Procedural posture, burdens, and available remedies outside the stated holding
 rule us.timbs.incorporation(matter: Matter) @ "1" {
   time_basis authority_time;
   jurisdiction "us";

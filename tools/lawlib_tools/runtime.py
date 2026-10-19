@@ -7,16 +7,7 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT = ROOT / 'us/wa/seattle'
 IGNORED = {'.git', '.build', '.cache', '.venv', '__pycache__', 'node_modules'}
-MODULE_PATHS = {
-    'entrypoint': None,
-    'sources': 'metadata',
-    'interpretations': 'metadata',
-    'coverage': 'metadata',
-    'review': 'metadata',
-    'pilot': 'metadata',
-    'migration': 'metadata',
-    'scenarios': 'tests/scenarios',
-}
+MODULE_PATHS = {'entrypoint': None, 'scenarios': 'tests/scenarios'}
 
 
 def package_root(path):
@@ -36,8 +27,10 @@ def module_paths(root, module_id):
     if len(matches) != 1:
         raise ValueError('expected one package module: ' + module_id)
     module = matches[0]
-    if not {'entrypoint', 'sources', 'interpretations'} <= module.keys():
-        raise ValueError('module requires entrypoint, sources and interpretations: ' + module_id)
+    if 'entrypoint' not in module:
+        raise ValueError('module requires entrypoint: ' + module_id)
+    if set(module) - {'id', *MODULE_PATHS}:
+        raise ValueError('unknown module fields; author explanations in .oath')
     paths = {}
     for field, prefix in MODULE_PATHS.items():
         if field not in module:
@@ -93,7 +86,7 @@ def check_layout(root=ROOT):
         if name.endswith(('.pdf', '.zip', '.wasm', '.tar.gz', '.module.json', '.case.json', '.report.json', '.assessment.json')) or name in {'oath.lock.json', 'review-packet.json', 'baseline.json'} or relative.as_posix() == 'community/current.json' or 'sources' in relative.parts:
             raise ValueError('generated output or evidence in source tree: ' + relative.as_posix())
         if relative.parts[0] in source_roots and path.suffix != '.oath' and name != 'README.md':
-            raise ValueError('legal source directories allow only .oath and README.md; use metadata/ or tests/scenarios/: ' + relative.as_posix())
+            raise ValueError('legal source directories allow only .oath and README.md; keep explanation in .oath and fixtures in tests/scenarios/: ' + relative.as_posix())
         if path.stat().st_size > 1024 * 1024:
             raise ValueError('authored file exceeds 1 MiB; split the module or use the evidence store: ' + str(relative))
 
