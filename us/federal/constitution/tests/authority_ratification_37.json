@@ -1,0 +1,172 @@
+{
+  "name": "authority_ratification_37",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.authority.modern_ratification_requirements",
+    "arguments": {
+      "facts": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.authority.RatificationFacts",
+          "type_args": [],
+          "fields": {
+            "assessment_on": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "20745"
+                    },
+                    "evidence": [
+                      "synthetic:constitutional-authority-fixture"
+                    ]
+                  }
+                }
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "article_v_governs": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "state_inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "number_of_states": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "50"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "ratifying_states": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "37"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "valid_proposal": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "congress_selected_mode": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "us.constitution.authority.RatificationMode",
+                "type_args": [],
+                "variant": "Legislatures",
+                "fields": []
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "counted_mode": {
+              "state": "known",
+              "value": {
+                "type": "variant",
+                "name": "us.constitution.authority.RatificationMode",
+                "type_args": [],
+                "variant": "Legislatures",
+                "fields": []
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "counted_ratifications_valid": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "applicable_timing_requirements_satisfied": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "deprives_state_equal_senate_suffrage": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "affected_state_consent_established": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            }
+          }
+        },
+        "evidence": [
+          "synthetic:constitutional-authority-fixture"
+        ]
+      }
+    },
+    "metadata": {
+      "scenario_kind": "Synthetic; no historical enactment or ratification asserted"
+    }
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": false
+    }
+  }
+}

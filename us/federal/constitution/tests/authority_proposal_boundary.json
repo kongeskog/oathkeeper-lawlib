@@ -1,0 +1,106 @@
+{
+  "name": "authority_proposal_boundary",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.authority.congressional_proposal_numeric_threshold",
+    "arguments": {
+      "house": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.text.Vote",
+          "type_args": [],
+          "fields": {
+            "affirmative": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "2"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "denominator": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "3"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            }
+          }
+        },
+        "evidence": [
+          "synthetic:constitutional-authority-fixture"
+        ]
+      },
+      "senate": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.text.Vote",
+          "type_args": [],
+          "fields": {
+            "affirmative": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "2"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "denominator": {
+              "state": "known",
+              "value": {
+                "type": "int",
+                "value": "3"
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            }
+          }
+        },
+        "evidence": [
+          "synthetic:constitutional-authority-fixture"
+        ]
+      }
+    },
+    "metadata": {
+      "scenario_kind": "Synthetic; no historical enactment or ratification asserted"
+    }
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "resolved",
+    "value": {
+      "type": "bool",
+      "value": true
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "name": "authority_unknown_passage",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.constitution.authority.signed_bill_path_requirements",
+    "arguments": {
+      "facts": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.constitution.authority.SignedBillFacts",
+          "type_args": [],
+          "fields": {
+            "ordinary_bill": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "procedural_inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "article_i_section_seven_applies": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "valid_house_passage": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "valid_senate_passage": {
+              "state": "missing",
+              "issues": [
+                {
+                  "id": "senate.passage",
+                  "kind": "Fact",
+                  "message": "Required accepted finding has not been supplied"
+                }
+              ]
+            },
+            "identical_text": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "presented_to_president": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "signed_by_president": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "signature_timing_valid": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "originated_in_house": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            },
+            "revenue_bill": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "synthetic:constitutional-authority-fixture"
+              ]
+            }
+          }
+        },
+        "evidence": [
+          "synthetic:constitutional-authority-fixture"
+        ]
+      }
+    },
+    "metadata": {
+      "scenario_kind": "Synthetic; no historical enactment or ratification asserted"
+    }
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "undetermined"
+  }
+}

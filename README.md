@@ -16,13 +16,16 @@ tracked separately.
 | `legal` | Shared legal records, lifecycle tests and an explicit deadline convention |
 | `private/household/demo` | Membership/quiet hours, emergency findings, delayed commencement, amendment, notice deadline and no invented fine |
 | `us/authority` | Narrow supplied court profiles; binding force, citation permission and persuasive relevance are separate questions |
-| `us/federal/constitution` | Selected age/citizenship requirements, numeric thresholds, Amendment XX commencement and a narrow Thornton proposition |
+| `us/federal/constitution` | Constitutional provision inventory and scoped authority model; conditional lawmaking requirements, selected qualifications/thresholds, Amendment XX commencement and a narrow Thornton proposition |
 | `us/federal/tax/ira/2025` | Ordinary same-year own-account contributions and conversions, exact basis allocation and selected Form 8606 reporting |
 | `us/federal/procedure/frcp/6` | Conditional Rule 6(a) date computation with supplied calendar findings, weekends, holidays and clerk inaccessibility |
 | `us/federal/courts/wawd/answer/2026` | Bounded ordinary answer-service date, 2026 holidays and concrete procedural exclusions |
 | `drafts/us/federal/commerce/9801` | Unimplemented historical source-linked draft; its test requires an unresolved answer |
 
-The Constitution source map covers all seven Articles and 27 Amendments.
+The [constitutional foundation](us/federal/constitution/README.md) inventories
+137 provision units across the Preamble, seven Articles and 27 Amendments, with
+37 scoped relationships and 10 institutional actors or classes. Only specifically
+linked questions execute; historical text is preserved with selected change links.
 The [federal source inventory](inventory/README.md) separately pins all 58 XML
 documents in OLRC release 119-121. Imported source structure is not executable
 coverage. See the [Rule 6 review packet](us/federal/procedure/frcp/6/REVIEW.md)

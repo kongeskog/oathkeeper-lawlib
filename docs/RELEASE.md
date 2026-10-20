@@ -1,5 +1,26 @@
 # Legal-library developer releases
 
+## 0.1.0-dev.4 — constitutional inventory and authority
+
+Adds 137 provision units from the three already pinned National Archives
+transcripts, 37 scoped authority/history relationships, and 10 institutional
+actors or classes. Original text, editorial notes and executable coverage remain
+distinct. The original documents remain external; derived text and typed `.oath`
+records reproduce through a hash-checked, snapshot-specific extractor.
+
+Three new queries check the ordinary-bill signature path, congressional proposal
+arithmetic and conditional modern Article V ratification requirements. 48 new
+authority fixtures plus four direct Amendment XX power fixtures bring the library
+to 191 fixtures across eight packages and 30 modules. Every passing semantic
+fixture receives an independent certificate check. Five inventory integrity and
+linkage tests cover source/digest alterations, historical preservation, query
+links and generated records. No language-kernel changes are needed.
+
+New records extend the jurisdiction-neutral legal library. Dependent package
+locks were explicitly refreshed; historical releases remain available. All legal
+review remains Unreviewed. No new comprehensive constitutional doctrine, actual
+enactment history, or complete source-authority chain is claimed.
+
 ## 0.1.0-dev.3 — source-to-encoding workflow
 
 Adds provision text extraction for two pinned OLRC releases, a shared CLI/browser

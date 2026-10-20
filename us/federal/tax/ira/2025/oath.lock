@@ -1,12 +1,12 @@
 {
   "version": "0.1.0",
   "root_package": "us.federal.tax.ira.2025",
-  "root_digest": "d64e3ace2d447300fafa332453b417e4e60b2a47f96de9ded7abf8696f04e8f0",
+  "root_digest": "71bda6430e64c4b7bc42a015172b491e108cc3d87bf5aa299f5ad0f9552dfc04",
   "packages": [
     {
       "name": "lawlib.legal",
       "version": "0.1.0",
-      "digest": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+      "digest": "3b427cb054a94d3ce187f728eb45e2776e6591d1acfa4e5e4037c60a65015f72",
       "dependencies": {
         "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
       }
@@ -20,9 +20,9 @@
     {
       "name": "us.federal.tax.ira.2025",
       "version": "0.1.0",
-      "digest": "d64e3ace2d447300fafa332453b417e4e60b2a47f96de9ded7abf8696f04e8f0",
+      "digest": "71bda6430e64c4b7bc42a015172b491e108cc3d87bf5aa299f5ad0f9552dfc04",
       "dependencies": {
-        "legal": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+        "legal": "3b427cb054a94d3ce187f728eb45e2776e6591d1acfa4e5e4037c60a65015f72",
         "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
       }
     }

@@ -1,12 +1,12 @@
 {
   "version": "0.1.0",
   "root_package": "private.household.demo",
-  "root_digest": "a4b225167bdd7c73d57cda7612411517d4636a10d9c69e475c2721d0f1f49402",
+  "root_digest": "34a83098dca18da742d43b0f23a3753a380d08fc811efb12140bfbff77e0f617",
   "packages": [
     {
       "name": "lawlib.legal",
       "version": "0.1.0",
-      "digest": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+      "digest": "3b427cb054a94d3ce187f728eb45e2776e6591d1acfa4e5e4037c60a65015f72",
       "dependencies": {
         "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
       }
@@ -14,9 +14,9 @@
     {
       "name": "private.household.demo",
       "version": "0.1.0",
-      "digest": "a4b225167bdd7c73d57cda7612411517d4636a10d9c69e475c2721d0f1f49402",
+      "digest": "34a83098dca18da742d43b0f23a3753a380d08fc811efb12140bfbff77e0f617",
       "dependencies": {
-        "legal": "79cbb1ad4f616764b9dda33fc43de5cb7a778a1043e7d4d7b5258e89f6022b7c",
+        "legal": "3b427cb054a94d3ce187f728eb45e2776e6591d1acfa4e5e4037c60a65015f72",
         "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
       }
     },
