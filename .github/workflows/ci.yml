@@ -31,15 +31,12 @@ jobs:
           path: lawlib
       - id: pin
         shell: pwsh
-        env:
-          RUNTIME_REPOSITORY: ${{ vars.OATHKEEPER_REPOSITORY }}
         run: |
-          if (-not $env:RUNTIME_REPOSITORY) { throw 'Set repository variable OATHKEEPER_REPOSITORY to owner/repository before enabling hosted CI.' }
           $pin = Get-Content -Raw lawlib/compatibility.json | ConvertFrom-Json
           "revision=$($pin.revision)" >> $env:GITHUB_OUTPUT
       - uses: actions/checkout@v4
         with:
-          repository: ${{ vars.OATHKEEPER_REPOSITORY }}
+          repository: ${{ vars.OATHKEEPER_REPOSITORY || 'kongeskog/oathkeeper' }}
           ref: ${{ steps.pin.outputs.revision }}
           path: oathkeeper
       - uses: dtolnay/rust-toolchain@master

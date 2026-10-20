@@ -1,7 +1,7 @@
 # lawlib
 
 lawlib is the separate repository of legal programs for
-[Oathkeeper](../oathkeeper/README.md). It provides jurisdiction-neutral records,
+[Oathkeeper](https://github.com/kongeskog/oathkeeper). It provides jurisdiction-neutral records,
 explicit authority relationships, historical revisions, source anchors and
 scoped executable examples. All initial legal encodings are **Unreviewed**.
 

@@ -92,7 +92,8 @@ a change is a legal amendment or encoding correction, and identify affected
 dependents through oath.lock. A general dependency impact-report command remains
 future maintenance work.
 
-Hosted CI uses the exact candidate revision in compatibility.json and requires
-the repository variable OATHKEEPER_REPOSITORY. Source fetching is confined to a
+Hosted CI uses the exact candidate revision in compatibility.json from
+`kongeskog/oathkeeper`; the repository variable OATHKEEPER_REPOSITORY can override
+that location for forks. Source fetching is confined to a
 separate manually invoked audit workflow, so availability or website changes do
 not make computational tests nondeterministic.
