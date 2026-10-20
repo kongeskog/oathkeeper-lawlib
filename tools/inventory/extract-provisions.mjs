@@ -7,6 +7,15 @@ import yauzl from 'yauzl';
 import { checkPin, checkEntry, hashFile } from './import-usc.mjs';
 import { provisionParser, hash, canonical } from './provisions.mjs';
 
+// Format /1 catalogs were published with gzip's Windows OS byte (10). Fix that
+// non-semantic header field so Linux reproduces those exact compressed digests.
+// This is a serialization convention, not a claim about the source's platform.
+export function gzipShard(value) {
+  const bytes = gzipSync(Buffer.from(JSON.stringify(value)), { level: 9 });
+  bytes[9] = 10;
+  return bytes;
+}
+
 export async function extract(pin, archive, output) {
   checkPin(pin);
   if ((await stat(archive)).size !== pin.bytes || await hashFile(archive) !== pin.sha256) throw new Error('Source digest mismatch');
@@ -32,7 +41,7 @@ export async function extract(pin, archive, output) {
       const flush = () => {
         if (!chunk.length) return;
         const path = `${entry.fileName}.${chunkNumber++}.json.gz`;
-        const bytes = gzipSync(Buffer.from(JSON.stringify(chunk)), { level: 9 });
+        const bytes = gzipShard(chunk);
         chunks.push({ path, sha256: hash(bytes), bytes: bytes.length, count: chunk.length });
         pending.push(writeFile(join(output, path), bytes, { flag: 'wx' }));
         chunk = []; chunkBytes = 0;
@@ -57,7 +66,7 @@ export async function extract(pin, archive, output) {
       if (rawBytes !== entry.uncompressedSize || summary.publication !== `Online@${pin.release}`) throw new Error('Wrong XML size or publication');
       const source = { file: entry.fileName, sha256: rawHash.digest('hex'), bytes: rawBytes };
       const index = { format: 'lawlib-provision-index/1', source, chunks, units: rows };
-      const bytes = gzipSync(Buffer.from(JSON.stringify(index)), { level: 9 });
+      const bytes = gzipShard(index);
       const indexPath = `${entry.fileName}.index.json.gz`;
       await writeFile(join(output, indexPath), bytes, { flag: 'wx' });
       documents.push({ ...source, title: summary.documentTitle, count: summary.count, index: { path: indexPath, sha256: hash(bytes), bytes: bytes.length } });

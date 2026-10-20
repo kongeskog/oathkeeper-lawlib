@@ -5,13 +5,18 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { provisionParser, hash } from './provisions.mjs';
-import { checkedGzip } from './extract-provisions.mjs';
+import { checkedGzip, gzipShard } from './extract-provisions.mjs';
 import { compareUnits, affectedEncodings, validateRegistry } from './impact.mjs';
 import { renderDraft } from './draft.mjs';
 import { materialize } from './materialize.mjs';
 
 const xml = body => `<uscDoc xmlns="http://xml.house.gov/schemas/uslm/1.0"><main><title identifier="/us/usc/t1"><num>Title 1</num><heading>General</heading>${body}</title></main></uscDoc>`;
 function parse(body) { const units = []; const p = provisionParser('usc01.xml', u => units.push(u)); for (const c of xml(body)) p.write(c); p.finish(); return units; }
+test('format-1 compressed bytes are reproducible across operating systems', () => {
+  const fixture = [{ key: '/us/usc/t1/s1', body: 'A rule.' }];
+  assert.equal(gzipShard(fixture).toString('hex'),
+    '1f8b080000000000020a8bae56ca4ead54b252d22f2dd62f2d4ed62f31d42f3654d2514aca4f01093b2a1495e6a4ea29d5c6020011b7802a2a000000');
+});
 test('separates operative text, editorial notes, credits and reference context', () => {
   const [u, standalone] = parse('<section identifier="/us/usc/t1/s1"><num>§ 1.</num><heading>Words</heading><content>Body <ref href="/us/usc/t1/s2">section 2</ref>.</content><sourceCredit>Act of 1900</sourceCredit><notes><note role="crossHeading" topic="editorialNotes">Editorial Notes</note><note topic="amendments">Changed <ref href="/us/pl/1/2">Act</ref><quotedContent><section><content>quoted</content></section></quotedContent></note></notes></section><notes><note identifier="/note/outside">Title-wide note</note></notes>');
   assert.equal(u.heading, 'Words'); assert.equal(u.body, 'Body section 2.');

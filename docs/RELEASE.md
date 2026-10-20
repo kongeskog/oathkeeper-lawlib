@@ -1,5 +1,13 @@
 # Legal-library developer releases
 
+## Publishing correction
+
+Source extraction now fixes the non-semantic gzip operating-system header byte
+to the format-1 value used by the published catalogs. Linux and Windows therefore
+reproduce the same compressed shard hashes. The source archives, legal programs,
+scenario results, and existing catalog pins are unchanged. A compressed-byte
+regression fixture checks this convention.
+
 ## 0.1.0-dev.4 — constitutional inventory and authority
 
 Adds 137 provision units from the three already pinned National Archives
