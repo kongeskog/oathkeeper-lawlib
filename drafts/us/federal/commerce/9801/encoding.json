@@ -1,0 +1,33 @@
+{
+  "format": "lawlib-encoding/1",
+  "id": "draft.us.commerce.section9801",
+  "package": ".",
+  "query": "draft.us.commerce.section9801.assessment",
+  "sources": [
+    {
+      "collection": "usc",
+      "release": "119-118",
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s9801",
+      "key": "90deb5e01fab52afd6aebdeb",
+      "content_sha256": "020c61c83d923073adc1931b22e61cc246c76d17547f7466e7125315e34d33bf",
+      "role": "support"
+    }
+  ],
+  "depends_on": [],
+  "tests": [
+    "tests/unimplemented.json"
+  ],
+  "questions": [
+    "Which definitions govern the selected chapter, and how do their scopes and revisions affect a future encoded question?"
+  ],
+  "unresolved": [
+    "Applicability, definitions, exceptions, other authorities and interpretation have not been investigated"
+  ],
+  "status": {
+    "implementation": "Unimplemented",
+    "source_integrity": "Pinned",
+    "semantic_tests": "UnreviewedExpectations",
+    "legal_review": "Unreviewed"
+  }
+}

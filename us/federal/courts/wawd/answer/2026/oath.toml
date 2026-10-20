@@ -1,0 +1,13 @@
+[package]
+name = "us.federal.courts.wawd.answer.2026"
+version = "0.1.0"
+language = "=0.1.0"
+entry = "src/main.oath"
+
+[dependencies.std]
+path = "../../../../../../../oathkeeper/stdlib"
+version = "=0.1.0"
+
+[dependencies.rule6]
+path = "../../../../procedure/frcp/6"
+version = "=0.1.0"

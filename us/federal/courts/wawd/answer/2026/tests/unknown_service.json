@@ -1,0 +1,228 @@
+{
+  "name": "unknown_service",
+  "request": {
+    "version": "0.1.0",
+    "query": "us.wawd.answer.answer_service_date",
+    "arguments": {
+      "facts": {
+        "state": "known",
+        "value": {
+          "type": "record",
+          "name": "us.wawd.answer.AnswerFacts",
+          "type_args": [],
+          "fields": {
+            "court_id": {
+              "state": "known",
+              "value": {
+                "type": "text",
+                "value": "us.court.wawd"
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "served_on": {
+              "state": "known",
+              "value": {
+                "type": "record",
+                "name": "std.date.Date",
+                "type_args": [],
+                "fields": {
+                  "day": {
+                    "state": "known",
+                    "value": {
+                      "type": "int",
+                      "value": "20514"
+                    },
+                    "evidence": [
+                      "hypothetical-fixture:accepted-finding"
+                    ]
+                  }
+                }
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "additional_federal_holidays": {
+              "state": "known",
+              "value": {
+                "type": "list",
+                "items": []
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "additional_state_holidays": {
+              "state": "known",
+              "value": {
+                "type": "list",
+                "items": []
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "selected_authorities_apply": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "valid_personal_rule4_service": {
+              "state": "missing",
+              "issues": [
+                {
+                  "id": "valid-service",
+                  "kind": "Fact",
+                  "message": "No accepted finding supplied"
+                }
+              ]
+            },
+            "ordinary_original_complaint": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "private_domestic_defendant": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "procedural_inventory_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "additional_holidays_complete": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": true
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "service_waived": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "removed_from_state_court": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "rule12_motion_served": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "amended_pleading": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "different_statutory_period": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "modifying_order": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "stay_or_tolling": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            },
+            "special_proceeding": {
+              "state": "known",
+              "value": {
+                "type": "bool",
+                "value": false
+              },
+              "evidence": [
+                "hypothetical-fixture:accepted-finding"
+              ]
+            }
+          }
+        },
+        "evidence": [
+          "hypothetical-fixture:accepted-finding"
+        ]
+      }
+    },
+    "metadata": {
+      "fixture_kind": "Hypothetical facts; real pinned authorities",
+      "legal_review": "Unreviewed",
+      "reason": "unknown_service"
+    }
+  },
+  "expected": {
+    "kind": "outcome",
+    "status": "undetermined",
+    "stage": "applicability",
+    "issue_ids": [
+      "valid-service"
+    ]
+  }
+}

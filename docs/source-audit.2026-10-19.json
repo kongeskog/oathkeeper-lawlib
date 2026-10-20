@@ -29,6 +29,11 @@
     },
     {
       "status": "matched",
+      "source": "us.court.wawd.lcr.2026.01.13",
+      "sha256": "d9befea781ff1b8d449e6b0bf598097fbf570e64f7234a56fb3de1c9ef704562"
+    },
+    {
+      "status": "matched",
       "source": "us.irs.form8606.2025",
       "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
     },
@@ -41,6 +46,11 @@
       "status": "matched",
       "source": "us.irs.notice2024_80",
       "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+    },
+    {
+      "status": "matched",
+      "source": "us.olrc.usc.119-118.usc15.xml",
+      "sha256": "19df1eb1db69bb378bd243336849bc61508119aaf8e734d427d3696eea175d01"
     },
     {
       "status": "matched",
@@ -71,6 +81,11 @@
       "status": "matched",
       "source": "us.uscourts.frcp.2025",
       "sha256": "bd8705fc038d87e4fe222a7ea2e4324222c9430e2373fce56826bd2dfa2f8baf"
+    },
+    {
+      "status": "matched",
+      "source": "us.wa.rcw.1.16.050.2026.10.19",
+      "sha256": "2fb73b8b8071f3f49f2884d10f5993c7afa691756fd9872027a8e4c2d1b0e101"
     }
   ]
 }

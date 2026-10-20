@@ -1,5 +1,28 @@
 # Legal-library developer releases
 
+## 0.1.0-dev.3 — source-to-encoding workflow
+
+Adds provision text extraction for two pinned OLRC releases, a shared CLI/browser
+draft renderer, and explicit source/encoding/test links with release comparison.
+67,680 source units per release retain body text, notes, credits and references.
+Original documents and large derived shards remain external to Git.
+
+The real comparison finds six uniquely located changes and 57 document groups
+requiring identity review. An earlier-release commerce draft is correctly affected
+and remains unresolved. Synthetic tests exercise dependent-encoding impact.
+No textual diff creates an enactment, repeal, or effective date.
+
+Adds a W.D. Washington ordinary answer-service profile: 33 authored fixtures cover
+2026 holidays, procedural exclusions and unresolved findings. Eight packages now
+contain 139 fixtures, including one deliberately unimplemented draft. All legal
+review statuses remain Unreviewed. The Rust implementation and candidate pin are
+unchanged. Source byte audits cover 17 unique references.
+
+The source workflow, comparison limitations and court review questions are in
+`docs/SOURCE-WORKFLOW.md` and the new court package README. Hosted CI still requires
+the configured OATHKEEPER_REPOSITORY repository variable; local checks do not claim
+that remote CI has run.
+
 ## 0.1.0-dev.2 — source inventory and procedural computation
 
 Adds the pinned OLRC 119-121 U.S. Code source inventory and an offline streaming

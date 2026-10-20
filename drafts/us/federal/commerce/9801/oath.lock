@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "root_package": "draft.us.commerce.section9801",
+  "root_digest": "f89a54e00fff9eed794b1f63d431a29a60e24f7f1d3372c1573d0c6e5de4daad",
+  "packages": [
+    {
+      "name": "draft.us.commerce.section9801",
+      "version": "0.1.0",
+      "digest": "f89a54e00fff9eed794b1f63d431a29a60e24f7f1d3372c1573d0c6e5de4daad",
+      "dependencies": {
+        "std": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054"
+      }
+    },
+    {
+      "name": "std",
+      "version": "0.1.0",
+      "digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+      "dependencies": {}
+    }
+  ]
+}

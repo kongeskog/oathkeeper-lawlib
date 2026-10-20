@@ -1,0 +1,14 @@
+{
+  "format": "lawlib-source-pin/1",
+  "id": "us.olrc.usc.release.119-118",
+  "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+  "release": "119-118",
+  "current_through": "Public Law 119-118 (2026-09-30)",
+  "retrieved_on": "2026-10-19",
+  "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/118/xml_uscAll@119-118.zip",
+  "sha256": "f360086bb53a62ab80f03d1ed85fe920124e1538736756c367e00a90470610a8",
+  "bytes": 108688724,
+  "expected_xml_documents": 58,
+  "legal_review": "Unreviewed",
+  "scope": "Publisher's all-titles U.S. Code XML release. Retained as a comparison snapshot; it is not an assertion of historical applicability."
+}

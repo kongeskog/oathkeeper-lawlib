@@ -1,0 +1,9 @@
+[package]
+name = "draft.us.commerce.section9801"
+version = "0.1.0"
+language = "=0.1.0"
+entry = "src/main.oath"
+
+[dependencies.std]
+path = "../../../../../../oathkeeper/stdlib"
+version = "=0.1.0"
