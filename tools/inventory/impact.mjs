@@ -27,6 +27,16 @@ export function compareUnits(before, after) {
   const old = group(before), next = group(after), changes = [];
   for (const locator of [...new Set([...old.keys(), ...next.keys()])].sort()) {
     const a = old.get(locator) ?? [], b = next.get(locator) ?? [];
+    if (locator === 'unlocated:document') {
+      // Cancel unchanged content as a multiset without inventing identity links.
+      const remaining = [...b], removed = [];
+      for (const unit of a) {
+        const at = remaining.findIndex(other => other.content_sha256 === unit.content_sha256);
+        if (at >= 0) remaining.splice(at, 1); else removed.push(unit);
+      }
+      if (removed.length || remaining.length) changes.push({locator:null,kind:'IdentityReviewRequired',before:removed,after:remaining,changed_parts:[]});
+      continue;
+    }
     if (a.length > 1 || b.length > 1 || locator.startsWith('unlocated:')) {
       if (canonical(a.map(x => x.content_sha256).sort()) !== canonical(b.map(x => x.content_sha256).sort())) changes.push({ locator: a[0]?.locator ?? b[0]?.locator ?? null, kind: 'IdentityReviewRequired', before: a, after: b, changed_parts: [] });
       continue;
